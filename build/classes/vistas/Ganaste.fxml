@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GanasteController">
+   <children>
+      <Label layoutX="192.0" layoutY="183.0" text="Ganaste">
+         <font>
+            <Font size="61.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnGanasteAceptar" layoutX="275.0" layoutY="287.0" mnemonicParsing="false" onAction="#pasarnivel" text="aceptar" />
+      <VBox layoutX="140.0" layoutY="49.0" prefHeight="134.0" prefWidth="204.0">
+         <children>
+            <HBox prefHeight="69.0" prefWidth="335.0">
+               <children>
+                  <ImageView fx:id="estrella2" fitHeight="68.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Star_96x96-32_37882.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="60.0" top="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="estrella1" disable="true" fitHeight="68.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Star_96x96-32_37882.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="17.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="estrella3" fitHeight="68.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Star_96x96-32_37882.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="17.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="204.0">
+               <children>
+                  <ImageView fx:id="estrella4" fitHeight="68.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Star_96x96-32_37882.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="estrella5" fitHeight="68.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Star_96x96-32_37882.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="184.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
