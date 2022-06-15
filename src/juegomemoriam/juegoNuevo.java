@@ -12,15 +12,18 @@ package juegomemoriam;
  */
 public class juegoNuevo {
     
+    
+    //VARIABLES PARA INICAR CARTAS 
     int numero1;
     int numero2;
     String operador;
     int resultado;
     
+    //RETORNA EL VALOR DE LA CARTA 
     public int getNumero1(){
         return numero1;
     }
-    
+    //RERORNA EL VALOR DE LA CARTA 
     public int getNumero2(){
         return numero2;
     }

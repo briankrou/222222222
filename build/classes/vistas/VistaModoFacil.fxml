@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VistaModoFacilController">
    <children>
@@ -21,9 +22,21 @@
                <children>
                   <HBox alignment="CENTER" layoutX="2.0" prefHeight="62.0" prefWidth="696.0">
                      <children>
-                        <Label prefHeight="17.0" prefWidth="49.0" text="NIVEL:" />
-                        <Label fx:id="Nivel" text="0" />
-                        <Label fx:id="labelDificultad" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="193.0" text="DIFICULTAD" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+                        <Label prefHeight="35.0" prefWidth="79.0" text="NIVEL:">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
+                        <Label fx:id="Nivel" contentDisplay="CENTER" prefHeight="35.0" prefWidth="37.0" text="0" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="12.0" />
+                           </padding></Label>
+                        <Label fx:id="labelDificultad" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="193.0" text="DIFICULTAD" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
                         <ImageView fx:id="Estrella1" fitHeight="43.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/Star_96x96-32_37882.png" />
@@ -59,20 +72,44 @@
                            <graphic>
                               <HBox fx:id="contenedorA1" alignment="CENTER" prefHeight="71.0" prefWidth="123.0">
                                  <children>
-                                    <Label fx:id="btnA1L1" text="0" />
-                                    <Label fx:id="btnA1L2" text="0" />
-                                    <Label fx:id="btnA1L3" text="0" />
+                                    <Label fx:id="btnA1L1" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnA1L2" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnA1L3" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </HBox>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnb1" mnemonicParsing="false" onAction="#cartaElegidaB1" prefHeight="125.0" prefWidth="125.0" style="-fx-background-color: RED;" GridPane.columnIndex="1">
+                        <Button fx:id="btnb1" mnemonicParsing="false" onAction="#cartaElegidaB1" prefHeight="125.0" prefWidth="125.0" GridPane.columnIndex="1">
                            <graphic>
                               <HBox fx:id="contenedorB1" alignment="CENTER" prefHeight="71.0" prefWidth="123.0">
                                  <children>
-                                    <Label fx:id="btnB1L1" text="0" />
-                                    <Label fx:id="btnB1L2" text="0" />
-                                    <Label fx:id="btnB1L3" text="0" />
+                                    <Label fx:id="btnB1L1" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnB1L2" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnB1L3" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </HBox>
                            </graphic>
@@ -81,9 +118,21 @@
                            <graphic>
                               <HBox fx:id="contenedorA2" alignment="CENTER" prefHeight="71.0" prefWidth="123.0">
                                  <children>
-                                    <Label fx:id="btnA2L1" text="0" />
-                                    <Label fx:id="btnA2L2" text="0" />
-                                    <Label fx:id="btnA2L3" text="0" />
+                                    <Label fx:id="btnA2L1" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnA2L2" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnA2L3" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </HBox>
                            </graphic>
@@ -92,9 +141,21 @@
                            <graphic>
                               <HBox fx:id="contenedorB2" alignment="CENTER" prefHeight="71.0" prefWidth="123.0">
                                  <children>
-                                    <Label fx:id="btnB2L1" text="0" />
-                                    <Label fx:id="btnB2L2" text="0" />
-                                    <Label fx:id="btnB2L3" text="0" />
+                                    <Label fx:id="btnB2L1" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnB2L2" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnB2L3" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </HBox>
                            </graphic>
@@ -103,9 +164,21 @@
                            <graphic>
                               <HBox fx:id="contenedorA3" alignment="CENTER" prefHeight="71.0" prefWidth="123.0">
                                  <children>
-                                    <Label fx:id="btnA3L1" text="0" />
-                                    <Label fx:id="btnA3L2" text="0" />
-                                    <Label fx:id="btnA3L3" text="0" />
+                                    <Label fx:id="btnA3L1" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnA3L2" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnA3L3" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </HBox>
                            </graphic>
@@ -114,9 +187,21 @@
                            <graphic>
                               <HBox fx:id="contenedorB3" alignment="CENTER" prefHeight="71.0" prefWidth="123.0">
                                  <children>
-                                    <Label fx:id="btnB3L1" text="0" />
-                                    <Label fx:id="btnB3L2" text="0" />
-                                    <Label fx:id="btnB3L3" text="0" />
+                                    <Label fx:id="btnB3L1" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnB3L2" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="btnB3L3" text="0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </HBox>
                            </graphic>
