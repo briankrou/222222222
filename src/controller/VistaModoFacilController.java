@@ -176,7 +176,12 @@ int nivelinicial;
 @FXML
 void cartaElegidaA1(ActionEvent event) throws IOException {
     
+    ocultarCartas(); 
+    
     contenedorA1.setVisible(true);
+     
+    
+   
 //--------------VALORES DE LA CARTA------//   
 //VALOR ID UNICO DEL BOTON               //
     String ID = "a1";                    //
@@ -270,12 +275,12 @@ void cartaElegidaA1(ActionEvent event) throws IOException {
                             
                 
                         }
-                    }         
+                    }else{      
 //----------------------------------------------------------------------------------------------------------------SI LAS CARTAS NO SON IGUALES 
-                        else{
+                        
              System.out.println(" LAS CARTAS 1 Y 2 NO SON IGUALES "+nuevo.valorcata1()+"/"+nuevo.valorcata2()); 
              //oculta cartas
-             ocultarCartas();
+            
              //VERIFICA SI SE PUEDE QUITAR ESTRELLAS OPTENIDAS
              
                             if(nuevo.getEstrellasOptenidas()>0){
@@ -292,6 +297,7 @@ void cartaElegidaA1(ActionEvent event) throws IOException {
  ////////////////////////// BOTON A2 /////////////////////////////
 @FXML
 void cartaElegidaA2(ActionEvent event) throws IOException {
+     ocultarCartas(); 
      contenedorA2.setVisible(true);
     
 //--------------VALORES DE LA CARTA------//   
@@ -390,7 +396,7 @@ void cartaElegidaA2(ActionEvent event) throws IOException {
                         else{
              System.out.println(" LAS CARTAS 1 Y 2 NO SON IGUALES "+nuevo.valorcata1()+"/"+nuevo.valorcata2());  
              //oculta cartas
-             ocultarCartas();
+           
              //VERIFICA SI SE PUEDE QUITAR ESTRELLAS OPTENIDAS
              
                             if(nuevo.getEstrellasOptenidas()>0){
@@ -407,6 +413,7 @@ void cartaElegidaA2(ActionEvent event) throws IOException {
  ////////////////////////// BOTON A3 /////////////////////////////
 @FXML
 void cartaElegidaA3(ActionEvent event) throws IOException {
+         ocultarCartas(); 
      contenedorA3.setVisible(true);
     
 //--------------VALORES DE LA CARTA------//   
@@ -505,7 +512,7 @@ void cartaElegidaA3(ActionEvent event) throws IOException {
                         else{
              System.out.println(" LAS CARTAS 1 Y 2 NO SON IGUALES "+nuevo.valorcata1()+"/"+nuevo.valorcata2());   
              //oculta cartas
-             ocultarCartas();
+        
              //VERIFICA SI SE PUEDE QUITAR ESTRELLAS OPTENIDAS
              
                             if(nuevo.getEstrellasOptenidas()>0){
@@ -522,6 +529,7 @@ void cartaElegidaA3(ActionEvent event) throws IOException {
  ////////////////////////// BOTON B1 /////////////////////////////
 @FXML
 void cartaElegidaB1(ActionEvent event) throws IOException {
+     ocultarCartas(); 
      contenedorB1.setVisible(true);
     
 //--------------VALORES DE LA CARTA------//   
@@ -620,7 +628,7 @@ void cartaElegidaB1(ActionEvent event) throws IOException {
                         else{
              System.out.println(" LAS CARTAS 1 Y 2 NO SON IGUALES "+nuevo.valorcata1()+"/"+nuevo.valorcata2());
              //oculta cartas
-             ocultarCartas();
+            
              //VERIFICA SI SE PUEDE QUITAR ESTRELLAS OPTENIDAS
              
                             if(nuevo.getEstrellasOptenidas()>0){
@@ -637,6 +645,7 @@ void cartaElegidaB1(ActionEvent event) throws IOException {
  ////////////////////////// BOTON B2 /////////////////////////////
 @FXML
 void cartaElegidaB2(ActionEvent event) throws IOException {
+         ocultarCartas(); 
     
      contenedorB2.setVisible(true);
 //--------------VALORES DE LA CARTA------//   
@@ -735,7 +744,7 @@ void cartaElegidaB2(ActionEvent event) throws IOException {
                         else{
              System.out.println(" LAS CARTAS 1 Y 2 NO SON IGUALES "+nuevo.valorcata1()+"/"+nuevo.valorcata2());
             //oculta cartas
-             ocultarCartas();
+          
              //VERIFICA SI SE PUEDE QUITAR ESTRELLAS OPTENIDAS
              
                             if(nuevo.getEstrellasOptenidas()>0){
