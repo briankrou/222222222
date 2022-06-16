@@ -14,7 +14,7 @@ package juegomemoriam;
 public class Contadores {
     
     
-//variables 
+//------------------------------------------------------variables------------------------------------------------------------- 
 static int nivel=0;
 
 String Dificultad;
@@ -23,21 +23,25 @@ int carta1=0;
 
 int carta2=0;
 
-String IDcarta1;
+String IDcarta1="";
 
-String IDcarta2;
-static int Estrellasoptenidas; 
+String IDcarta2="";
+
+int Estrellasoptenidas; 
+
 static int EstrelalsoptenidasFinales;
 
-int NumeroDeEstrellas;
+static int NumeroDeEstrellas;
+
 int cartasOptenidas=0;
+
 int  numeroDeCartas;
 
-//------------------------------------------------
+//------------------------------------------------------Metodos Get------------------------------------------------------------
 
 
 // RETORNA EL NUMERO DE ESTRELLAS DEL JUEGO SEGUN EL NIVEL 
-public  int getNumeroDeEstrellas(){
+public static  int getNumeroDeEstrellas(){
     return NumeroDeEstrellas;
 }
 //RETORNA EL NUMERO DE ESTRELLAS OPTENIDAS 
@@ -45,52 +49,98 @@ public  int getEstrellasOptenidas(){
     return Estrellasoptenidas;
 }
 
-//METODO AYUDO AUMENTA LAS ESTRELLAS 
-public  void aumentarNumeroDeEstrellasOptenidas(){
-    System.out.println("aumenta las estrella");
-        Estrellasoptenidas++;
-
-}
 //METODO RETORNA NUMERO DE ESTRELLAS DEL JUEGO 
-public  void setNumeroDeEstrellas(int num){
+public static  void setNumeroDeEstrellas(int num){
     NumeroDeEstrellas=num;
 }
-//METODO RESTA ESTRELLAS 
-public void disminuirNumeroDeEstrellasOptenidas(){
-    System.out.println("menos las estrella");
-        Estrellasoptenidas--;
-        
+//RETORNA LAS ESTRELLAS FINALES 
+public static int getEstrellasFinales(){
+    return EstrelalsoptenidasFinales;
 }
+//RETORNA NUMERO DE CARYAS DEL JUEGO SEGUN EL NIVEL 
+
+public int getNumeroDeCartas(){
+    return numeroDeCartas;
+}
+// CAMBIA EL NUMERO DE CARTAS QUE HAY QUE DESTAPAR 
+
+public void setNumeroDeCartas(int num){
+    numeroDeCartas=num;
+}
+
+//REINICIA LAS ESTRELLAS OPTENIDAS 
+public  void reiciarEstrellasOptenidas(){
+    
+    Estrellasoptenidas=0;
+    
+    System.out.print("recinicai estrellas a "+Estrellasoptenidas);
+}
+
+//RETORNA EL NIVEL DEL JUEGO
+public static int getNivel(){
+    return nivel;
+}
+//REINICIA LAS CARTAS ELEGIDAS 1 Y 2
+public  void ReiniciarCartas(){
+    carta1=0;
+    carta2=0;
+    IDcarta1="";
+    IDcarta2="";
+    
+    System.out.println("Reinicia carta 1 a valor : "+carta1+" y ID "+IDcarta1+"\ncarta 2 a valor: "+carta2+" y ID "+IDcarta2);
+}
+///-----------------------------------------------------Metodos Set-----------------------------------------------------------
+
+
+
+
 //METODO CAMBIA LAS ESTRELLAS FINAL DEL JUEGO PARA MOSTRAR CUANDO GANA O PIERDE 
 public static void setEstrellasFinales(int num){
     EstrelalsoptenidasFinales=num;
 }
 
-//RETORNA LAS ESTRELLAS FINALES 
-public static int getEstrellasFinales(){
-    return EstrelalsoptenidasFinales;
+
+
+//METODO AYUDO AUMENTA LAS ESTRELLAS 
+public  void aumentarNumeroDeEstrellasOptenidas(){
+
+        if(Estrellasoptenidas<getNumeroDeEstrellas()){
+            
+            System.out.print("Estrellas a optenr cuando suma "+getNumeroDeEstrellas());
+            Estrellasoptenidas++; 
+        }
+       
+    
+
 }
 
-//REINICIA LAS ESTRELLAS OPTENIDAS 
-public  static void reiciarEstrellasOptenidas(){
-    Estrellasoptenidas=0;
+//METODO RESTA ESTRELLAS 
+public void disminuirNumeroDeEstrellasOptenidas(){
+    System.out.println("menos una estrella");
+    
+       if(Estrellasoptenidas>0){
+           Estrellasoptenidas--;
+       }
+        
 }
-//RETORNA NUMERO DE CARYAS DEL JUEGO SEGUN EL NIVEL 
-public int getNumeroDeCartas(){
-    return numeroDeCartas;
-}
-// CAMBIA EL NUMERO DE CARTAS QUE HAY QUE DESTAPAR 
-public void setNumeroDeCartas(int num){
-    numeroDeCartas=num;
-}
+
+
+
+
+
+
 //SUMA A EL CONTADOR DE CARTAS OPTENIDAS A MEDIA QUE LAS ENCUENTRA 
+
 public  void sumarCartasOptenidas(){
     cartasOptenidas++;
 }
 
 //RESTONA EL NUMERO DE CARTAS OPTENIDAS 
+
 public  int  getCartasOptenidas(){
+    
     return cartasOptenidas;
+    
 }
 //CAMBIA EL 
 public  void cambiarIdCarta1(String id){
@@ -116,10 +166,7 @@ public static void  Subirnivel(){
 public static void reiniciarNivel(){
     nivel=0;
 }
-//RETORNA EL NIVEL DEL JUEGO
-public static int getNivel(){
-    return nivel;
-}
+
 //CAMBIA EL TEXTO DE DIFICULTAD 
 public  void CambiarDificultad(String dificultad){
     Dificultad=dificultad;
@@ -145,11 +192,7 @@ public int valorcata2(){
     return carta2;
 }
 
-//REINICIA LAS CARTAS ELEGIDAS 1 Y 2
-public  void ReiniciarCartas(){
-    carta1=0;
-    carta2=0;
-}
+
 
     
 }

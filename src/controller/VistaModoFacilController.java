@@ -6,7 +6,6 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,6 +23,7 @@ import javafx.stage.Window;
 import juegomemoriam.Contadores;
 import juegomemoriam.iniciar;
 import juegomemoriam.juegoNuevo;
+import juegomemoriam.sound;
 
 /**
  * FXML Controller class
@@ -33,6 +33,8 @@ import juegomemoriam.juegoNuevo;
 public class VistaModoFacilController implements Initializable {
 
 int nivelinicial;
+    int cartasSeleccionadas=0;
+    sound reproduce = new sound();
 
     iniciar nuevo=new iniciar();
     
@@ -175,13 +177,11 @@ int nivelinicial;
  ////////////////////////// BOTON A1 /////////////////////////////
 @FXML
 void cartaElegidaA1(ActionEvent event) throws IOException {
-    
-    ocultarCartas(); 
+   
+    CartasSeleccionadas();
     
     contenedorA1.setVisible(true);
-     
-    
-   
+
 //--------------VALORES DE LA CARTA------//   
 //VALOR ID UNICO DEL BOTON               //
     String ID = "a1";                    //
@@ -189,117 +189,33 @@ void cartaElegidaA1(ActionEvent event) throws IOException {
 //VALOR DEL BOTON                        //   
     int valorCarta=a1;                    //
 //------------------------------------_--//
-        
-//ASIGNA EL VALOR DE LA CARTA 1 Y 2 DE LA CLASE CONTADORES
 
-    //COMPARA QUE CARTA TIENE EL VALOR DE 0
-
-    if(nuevo.valorcata1()==0){
-        //si la carta 1 tiene el valor de 0 le asigna los valores del boton
-
-        
-            nuevo.CambiarValorCarta1(valorCarta);
-
-            nuevo.cambiarIdCarta1(ID);
-
-
-                } else 
-        //si la carta 1 tiene el valor diferente a 0 CONTINUA CON LA VERIFICACION DE VALOR DE LA CARTA 2
-
-                    if(nuevo.valorcata2()==0){
-        //Si la carta 2 tiene el valor de 0 le asigna los valores del boton
-
-         
-                      nuevo.CambiarValorCarta2(valorCarta);
-
-                      nuevo.cambiarIdCarta2(ID);
-
-                                     
-//>>>>>>>>>>>>>>>>>>>CUANDO LA CARTA 1 Y 2 TENGAN VALOR DISTINTO A 0 COMPARA SI LAS CARTAS SON IGUALES<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<      
-
-                        if(nuevo.valorcata2()==nuevo.valorcata1()){
-
-                            if(!nuevo.valorIdCarta1().equals(nuevo.valorIdCarta2())){
-
-//-----------------------------------------------------------------------------------------------------------------SI LAS CARTAS SON IGUALES                         
-                            
-                 //VERIFICA SI SE PUEDE AUMENTAR ESTRELLAS  OPTENIDAS
-                            if(nuevo.getEstrellasOptenidas()<nuevo.getNumeroDeEstrellas()){
-                                  nuevo.aumentarNumeroDeEstrellasOptenidas();//<---aumenta estrellas optenidas
-                            }
-                          
-                            siGana();
-                            
- //???????? COMPRUEBA SI LAS CARTAS ENCONTRADAS ESTAN COMPLETAS????????????
-                             System.out.println("compara numero de cartas "+nuevo.getCartasOptenidas()+"/"+nuevo.getNumeroDeCartas());
-                            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
-                                
-                            Contadores.setEstrellasFinales(nuevo.getEstrellasOptenidas());
-                               
-                             
-       //*****SI LAS CARTAS ESTAN COMPLETAS
-                            
-                        //CIERRA LA INTERFAS ACTUAL
-                                            
-                                             Object eventSource= event.getSource();
-                                             Node sourceAsNode = (Node) eventSource;
-                                             Scene oldScene= sourceAsNode.getScene();
-                                             Window window =oldScene.getWindow();
-                                             Stage stage =(Stage) window;
-                                             stage.hide();
-                                             
-                        //INICIA SIGUIENTE INTERFAS
-                                             
-                                //Comprueba las estrellas del juego para decidir que interfas iniciar
-                                             
-                                             if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
-                                                 
-                                                 
-                                    //si Cumple con las estrellas ,inicia la intefas GANASTE
-                                    
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Ganaste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }else{
-                                    //NO Cumple con las estrellas ,inicia la interfas PERDISTE
-                                    
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Perdiste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }
-                            }
-                            
-         //*******SI LAS CARTAS NO ESTAN COMPLETAS  CONTINUA EL JUEGO   
-                            
+    eventoClick(valorCarta,ID);
+    
+    if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
                 
-                        }
-                    }else{      
-//----------------------------------------------------------------------------------------------------------------SI LAS CARTAS NO SON IGUALES 
-                        
-             System.out.println(" LAS CARTAS 1 Y 2 NO SON IGUALES "+nuevo.valorcata1()+"/"+nuevo.valorcata2()); 
-             //oculta cartas
-            
-             //VERIFICA SI SE PUEDE QUITAR ESTRELLAS OPTENIDAS
-             
-                            if(nuevo.getEstrellasOptenidas()>0){
-                               nuevo.disminuirNumeroDeEstrellasOptenidas();//<<---Quita estrellas optenidas
-                            }
-                                siPierde();
-                        }
-                    
+        Object eventSource= event.getSource();
+        Node sourceAsNode = (Node) eventSource;
+        Scene oldScene= sourceAsNode.getScene();
+        Window window =oldScene.getWindow();
+        Stage stage =(Stage) window;
+        stage.hide();
                 
- 
-                    }
+        if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+            abrirVistaGanaste(stage);
+        }else{
+            abrirVistaPerdiste(stage);
+        }
+        
     }
 
+}
  ////////////////////////// BOTON A2 /////////////////////////////
 @FXML
 void cartaElegidaA2(ActionEvent event) throws IOException {
      ocultarCartas(); 
      contenedorA2.setVisible(true);
-    
+     
 //--------------VALORES DE LA CARTA------//   
 //VALOR ID UNICO DEL BOTON               //
     String ID = "a2";                    //
@@ -307,115 +223,34 @@ void cartaElegidaA2(ActionEvent event) throws IOException {
 //VALOR DEL BOTON                        //   
     int valorCarta=a2;                    //
 //------------------------------------_--//
-        
-//ASIGNA EL VALOR DE LA CARTA 1 Y 2 DE LA CLASE CONTADORES
 
-    //COMPARA QUE CARTA TIENE EL VALOR DE 0
-
-    if(nuevo.valorcata1()==0){
-        //si la carta 1 tiene el valor de 0 le asigna los valores del boton
-
-        
-            nuevo.CambiarValorCarta1(valorCarta);
-
-            nuevo.cambiarIdCarta1(ID);
-
-
-                } else 
-        //si la carta 1 tiene el valor diferente a 0 CONTINUA CON LA VERIFICACION DE VALOR DE LA CARTA 2
-
-                    if(nuevo.valorcata2()==0){
-        //Si la carta 2 tiene el valor de 0 le asigna los valores del boton
-
-         
-                      nuevo.CambiarValorCarta2(valorCarta);
-
-                      nuevo.cambiarIdCarta2(ID);
-
-                                     
-//>>>>>>>>>>>>>>>>>>>CUANDO LA CARTA 1 Y 2 TENGAN VALOR DISTINTO A 0 COMPARA SI LAS CARTAS SON IGUALES<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<      
-
-                        if(nuevo.valorcata2()==nuevo.valorcata1()){
-
-                            if(!nuevo.valorIdCarta1().equals(nuevo.valorIdCarta2())){
-
-//-----------------------------------------------------------------------------------------------------------------SI LAS CARTAS SON IGUALES                         
-                            
-                 //VERIFICA SI SE PUEDE AUMENTAR ESTRELLAS  OPTENIDAS
-                            if(nuevo.getEstrellasOptenidas()<nuevo.getNumeroDeEstrellas()){
-                                  nuevo.aumentarNumeroDeEstrellasOptenidas();//<---aumenta estrellas optenidas
-                            }
-                          
-                            siGana();
-                            
- //???????? COMPRUEBA SI LAS CARTAS ENCONTRADAS ESTAN COMPLETAS????????????
-                             System.out.println("compara numero de cartas "+nuevo.getCartasOptenidas()+"/"+nuevo.getNumeroDeCartas());
-                            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
-                            
-                                Contadores.setEstrellasFinales(nuevo.getEstrellasOptenidas());
-                               
-                             
-       //*****SI LAS CARTAS ESTAN COMPLETAS
-                            
-                        //CIERRA LA INTERFAS ACTUAL
-                                            
-                                             Object eventSource= event.getSource();
-                                             Node sourceAsNode = (Node) eventSource;
-                                             Scene oldScene= sourceAsNode.getScene();
-                                             Window window =oldScene.getWindow();
-                                             Stage stage =(Stage) window;
-                                             stage.hide();
-                                             
-                        //INICIA SIGUIENTE INTERFAS
-                                             
-                                //Comprueba las estrellas del juego para decidir que interfas iniciar
-                                             
-                                             if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
-                                                 
-                                                 
-                                    //si Cumple con las estrellas ,inicia la intefas GANASTE
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Ganaste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }else{
-                                    //NO Cumple con las estrellas ,inicia la interfas PERDISTE
-                                    
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Perdiste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }
-                            }
-                            
-         //*******SI LAS CARTAS NO ESTAN COMPLETAS  CONTINUA EL JUEGO    
+            eventoClick(valorCarta,ID);
+            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
                 
-                        }
-                    }         
-//----------------------------------------------------------------------------------------------------------------SI LAS CARTAS NO SON IGUALES 
-                        else{
-             System.out.println(" LAS CARTAS 1 Y 2 NO SON IGUALES "+nuevo.valorcata1()+"/"+nuevo.valorcata2());  
-             //oculta cartas
-           
-             //VERIFICA SI SE PUEDE QUITAR ESTRELLAS OPTENIDAS
-             
-                            if(nuevo.getEstrellasOptenidas()>0){
-                               nuevo.disminuirNumeroDeEstrellasOptenidas();//<<---Quita estrellas optenidas
-                            }
-                                siPierde();
-                        }
-                    
+                Object eventSource= event.getSource();
+                Node sourceAsNode = (Node) eventSource;
+                Scene oldScene= sourceAsNode.getScene();
+                Window window =oldScene.getWindow();
+                Stage stage =(Stage) window;
+                stage.hide();
                 
- 
-                    }
-    }
-
+                if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+                    abrirVistaGanaste(stage);
+                }else{
+                    abrirVistaPerdiste(stage);
+                }
+                
+            }
+            
+        
+}
  ////////////////////////// BOTON A3 /////////////////////////////
 @FXML
 void cartaElegidaA3(ActionEvent event) throws IOException {
          ocultarCartas(); 
-     contenedorA3.setVisible(true);
+    contenedorA3.setVisible(true);
     
+   
 //--------------VALORES DE LA CARTA------//   
 //VALOR ID UNICO DEL BOTON               //
     String ID = "a3";                    //
@@ -423,51 +258,10 @@ void cartaElegidaA3(ActionEvent event) throws IOException {
 //VALOR DEL BOTON                        //   
     int valorCarta=a3;                    //
 //------------------------------------_--//
-        
-//ASIGNA EL VALOR DE LA CARTA 1 Y 2 DE LA CLASE CONTADORES
 
-    //COMPARA QUE CARTA TIENE EL VALOR DE 0
-
-    if(nuevo.valorcata1()==0){
-        //si la carta 1 tiene el valor de 0 le asigna los valores del boton
-
-        
-            nuevo.CambiarValorCarta1(valorCarta);
-
-            nuevo.cambiarIdCarta1(ID);
-
-
-                } else 
-        //si la carta 1 tiene el valor diferente a 0 CONTINUA CON LA VERIFICACION DE VALOR DE LA CARTA 2
-
-                    if(nuevo.valorcata2()==0){
-        //Si la carta 2 tiene el valor de 0 le asigna los valores del boton
-
-         
-                      nuevo.CambiarValorCarta2(valorCarta);
-
-                      nuevo.cambiarIdCarta2(ID);
-
-                                     
-//>>>>>>>>>>>>>>>>>>>CUANDO LA CARTA 1 Y 2 TENGAN VALOR DISTINTO A 0 COMPARA SI LAS CARTAS SON IGUALES<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<      
-
-                        if(nuevo.valorcata2()==nuevo.valorcata1()){
-
-                            if(!nuevo.valorIdCarta1().equals(nuevo.valorIdCarta2())){
-
-//-----------------------------------------------------------------------------------------------------------------SI LAS CARTAS SON IGUALES                         
-                            
-                 //VERIFICA SI SE PUEDE AUMENTAR ESTRELLAS  OPTENIDAS
-                            if(nuevo.getEstrellasOptenidas()<nuevo.getNumeroDeEstrellas()){
-                                  nuevo.aumentarNumeroDeEstrellasOptenidas();//<---aumenta estrellas optenidas
-                            }
-                          
-                            siGana();
-                            
- //???????? COMPRUEBA SI LAS CARTAS ENCONTRADAS ESTAN COMPLETAS????????????
-                             System.out.println("compara numero de cartas "+nuevo.getCartasOptenidas()+"/"+nuevo.getNumeroDeCartas());
-                            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
-                                
+            eventoClick(valorCarta,ID);
+            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
+                
                                 Contadores.setEstrellasFinales(nuevo.getEstrellasOptenidas());
                                
                              
@@ -475,63 +269,37 @@ void cartaElegidaA3(ActionEvent event) throws IOException {
                             
                         //CIERRA LA INTERFAS ACTUAL
                                             
-                                             Object eventSource= event.getSource();
-                                             Node sourceAsNode = (Node) eventSource;
-                                             Scene oldScene= sourceAsNode.getScene();
-                                             Window window =oldScene.getWindow();
-                                             Stage stage =(Stage) window;
-                                             stage.hide();
-                                             
+                Object eventSource= event.getSource();
+                Node sourceAsNode = (Node) eventSource;
+                Scene oldScene= sourceAsNode.getScene();
+                Window window =oldScene.getWindow();
+                Stage stage =(Stage) window;
+                stage.hide();
+                
                         //INICIA SIGUIENTE INTERFAS
                                              
                                 //Comprueba las estrellas del juego para decidir que interfas iniciar
                                              
-                                             if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
-                                                 
-                                                 
-                                    //si Cumple con las estrellas ,inicia la intefas GANASTE
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Ganaste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }else{
-                                    //NO Cumple con las estrellas ,inicia la interfas PERDISTE
-                                    
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Perdiste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }
-                            }
-                            
-         //*******SI LAS CARTAS NO ESTAN COMPLETAS  CONTINUA EL JUEGO    
+                if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+                    abrirVistaGanaste(stage);
+                }else{
+                    abrirVistaPerdiste(stage);
+                }
                 
-                        }
-                    }         
-//----------------------------------------------------------------------------------------------------------------SI LAS CARTAS NO SON IGUALES 
-                        else{
-             System.out.println(" LAS CARTAS 1 Y 2 NO SON IGUALES "+nuevo.valorcata1()+"/"+nuevo.valorcata2());   
-             //oculta cartas
+            
+                
+            }
+            //*******SI LAS CARTAS NO ESTAN COMPLETAS  CONTINUA EL JUEGO 
         
-             //VERIFICA SI SE PUEDE QUITAR ESTRELLAS OPTENIDAS
-             
-                            if(nuevo.getEstrellasOptenidas()>0){
-                               nuevo.disminuirNumeroDeEstrellasOptenidas();//<<---Quita estrellas optenidas
-                            }
-                                siPierde();
-                        }
-                    
-                
- 
-                    }
-    }
+}
 
  ////////////////////////// BOTON B1 /////////////////////////////
 @FXML
 void cartaElegidaB1(ActionEvent event) throws IOException {
      ocultarCartas(); 
-     contenedorB1.setVisible(true);
+    contenedorB1.setVisible(true);
     
+   
 //--------------VALORES DE LA CARTA------//   
 //VALOR ID UNICO DEL BOTON               //
     String ID = "b1";                    //
@@ -539,115 +307,33 @@ void cartaElegidaB1(ActionEvent event) throws IOException {
 //VALOR DEL BOTON                        //   
     int valorCarta=b1;                    //
 //------------------------------------_--//
-        
-//ASIGNA EL VALOR DE LA CARTA 1 Y 2 DE LA CLASE CONTADORES
 
-    //COMPARA QUE CARTA TIENE EL VALOR DE 0
-
-    if(nuevo.valorcata1()==0){
-        //si la carta 1 tiene el valor de 0 le asigna los valores del boton
-
-        
-            nuevo.CambiarValorCarta1(valorCarta);
-
-            nuevo.cambiarIdCarta1(ID);
-
-
-                } else 
-        //si la carta 1 tiene el valor diferente a 0 CONTINUA CON LA VERIFICACION DE VALOR DE LA CARTA 2
-
-                    if(nuevo.valorcata2()==0){
-        //Si la carta 2 tiene el valor de 0 le asigna los valores del boton
-
-         
-                      nuevo.CambiarValorCarta2(valorCarta);
-
-                      nuevo.cambiarIdCarta2(ID);
-
-                                     
-//>>>>>>>>>>>>>>>>>>>CUANDO LA CARTA 1 Y 2 TENGAN VALOR DISTINTO A 0 COMPARA SI LAS CARTAS SON IGUALES<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<      
-
-                        if(nuevo.valorcata2()==nuevo.valorcata1()){
-
-                            if(!nuevo.valorIdCarta1().equals(nuevo.valorIdCarta2())){
-
-//-----------------------------------------------------------------------------------------------------------------SI LAS CARTAS SON IGUALES                         
-                            
-                 //VERIFICA SI SE PUEDE AUMENTAR ESTRELLAS  OPTENIDAS
-                            if(nuevo.getEstrellasOptenidas()<nuevo.getNumeroDeEstrellas()){
-                                  nuevo.aumentarNumeroDeEstrellasOptenidas();//<---aumenta estrellas optenidas
-                            }
-                          
-                            siGana();
-                            
- //???????? COMPRUEBA SI LAS CARTAS ENCONTRADAS ESTAN COMPLETAS????????????
-                             System.out.println("compara numero de cartas "+nuevo.getCartasOptenidas()+"/"+nuevo.getNumeroDeCartas());
-                            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
-                                
-                                Contadores.setEstrellasFinales(nuevo.getEstrellasOptenidas());
-                               
-                             
-       //*****SI LAS CARTAS ESTAN COMPLETAS
-                            
-                        //CIERRA LA INTERFAS ACTUAL
-                                            
-                                             Object eventSource= event.getSource();
-                                             Node sourceAsNode = (Node) eventSource;
-                                             Scene oldScene= sourceAsNode.getScene();
-                                             Window window =oldScene.getWindow();
-                                             Stage stage =(Stage) window;
-                                             stage.hide();
-                                             
-                        //INICIA SIGUIENTE INTERFAS
-                                             
-                                //Comprueba las estrellas del juego para decidir que interfas iniciar
-                                             
-                                             if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
-                                                 
-                                                 
-                                    //si Cumple con las estrellas ,inicia la intefas GANASTE
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Ganaste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }else{
-                                    //NO Cumple con las estrellas ,inicia la interfas PERDISTE
-                                    
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Perdiste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }
-                            }
-                            
-         //*******SI LAS CARTAS NO ESTAN COMPLETAS  CONTINUA EL JUEGO    
+            eventoClick(valorCarta,ID);
+            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
                 
-                        }
-                    }         
-//----------------------------------------------------------------------------------------------------------------SI LAS CARTAS NO SON IGUALES 
-                        else{
-             System.out.println(" LAS CARTAS 1 Y 2 NO SON IGUALES "+nuevo.valorcata1()+"/"+nuevo.valorcata2());
-             //oculta cartas
+                Object eventSource= event.getSource();
+                Node sourceAsNode = (Node) eventSource;
+                Scene oldScene= sourceAsNode.getScene();
+                Window window =oldScene.getWindow();
+                Stage stage =(Stage) window;
+                stage.hide();
+                
+                if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+                    abrirVistaGanaste(stage);
+                }else{
+                    abrirVistaPerdiste(stage);
+                }
+                
+            }
             
-             //VERIFICA SI SE PUEDE QUITAR ESTRELLAS OPTENIDAS
-             
-                            if(nuevo.getEstrellasOptenidas()>0){
-                               nuevo.disminuirNumeroDeEstrellasOptenidas();//<<---Quita estrellas optenidas
-                            }
-                                siPierde();
-                        }
-                    
-                
- 
-                    }
-    }
-
+        
+}
  ////////////////////////// BOTON B2 /////////////////////////////
+
 @FXML
 void cartaElegidaB2(ActionEvent event) throws IOException {
-         ocultarCartas(); 
-    
-     contenedorB2.setVisible(true);
+ CartasSeleccionadas();
+    contenedorB2.setVisible(true);
 //--------------VALORES DE LA CARTA------//   
 //VALOR ID UNICO DEL BOTON               //
     String ID = "b2";                    //
@@ -655,114 +341,36 @@ void cartaElegidaB2(ActionEvent event) throws IOException {
 //VALOR DEL BOTON                        //   
     int valorCarta=b2;                    //
 //------------------------------------_--//
-        
-//ASIGNA EL VALOR DE LA CARTA 1 Y 2 DE LA CLASE CONTADORES
 
-    //COMPARA QUE CARTA TIENE EL VALOR DE 0
-
-    if(nuevo.valorcata1()==0){
-        //si la carta 1 tiene el valor de 0 le asigna los valores del boton
-
-        
-            nuevo.CambiarValorCarta1(valorCarta);
-
-            nuevo.cambiarIdCarta1(ID);
-
-
-                } else 
-        //si la carta 1 tiene el valor diferente a 0 CONTINUA CON LA VERIFICACION DE VALOR DE LA CARTA 2
-
-                    if(nuevo.valorcata2()==0){
-        //Si la carta 2 tiene el valor de 0 le asigna los valores del boton
-
-         
-                      nuevo.CambiarValorCarta2(valorCarta);
-
-                      nuevo.cambiarIdCarta2(ID);
-
-                                     
-//>>>>>>>>>>>>>>>>>>>CUANDO LA CARTA 1 Y 2 TENGAN VALOR DISTINTO A 0 COMPARA SI LAS CARTAS SON IGUALES<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<      
-
-                        if(nuevo.valorcata2()==nuevo.valorcata1()){
-
-                            if(!nuevo.valorIdCarta1().equals(nuevo.valorIdCarta2())){
-
-//-----------------------------------------------------------------------------------------------------------------SI LAS CARTAS SON IGUALES                         
-                            
-                 //VERIFICA SI SE PUEDE AUMENTAR ESTRELLAS  OPTENIDAS
-                            if(nuevo.getEstrellasOptenidas()<nuevo.getNumeroDeEstrellas()){
-                                  nuevo.aumentarNumeroDeEstrellasOptenidas();//<---aumenta estrellas optenidas
-                            }
-                          
-                            siGana();
-                            
- //???????? COMPRUEBA SI LAS CARTAS ENCONTRADAS ESTAN COMPLETAS????????????
-                             System.out.println("compara numero de cartas "+nuevo.getCartasOptenidas()+"/"+nuevo.getNumeroDeCartas());
-                            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
-                                
-                                Contadores.setEstrellasFinales(nuevo.getEstrellasOptenidas());
-                               
-                             
-       //*****SI LAS CARTAS ESTAN COMPLETAS
-                            
-                        //CIERRA LA INTERFAS ACTUAL
-                                            
-                                             Object eventSource= event.getSource();
-                                             Node sourceAsNode = (Node) eventSource;
-                                             Scene oldScene= sourceAsNode.getScene();
-                                             Window window =oldScene.getWindow();
-                                             Stage stage =(Stage) window;
-                                             stage.hide();
-                                             
-                        //INICIA SIGUIENTE INTERFAS
-                                             
-                                //Comprueba las estrellas del juego para decidir que interfas iniciar
-                                             
-                                             if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
-                                                 
-                                                 
-                                    //si Cumple con las estrellas ,inicia la intefas GANASTE
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Ganaste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }else{
-                                    //NO Cumple con las estrellas ,inicia la interfas PERDISTE
-                                    
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Perdiste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }
-                            }
-                            
-         //*******SI LAS CARTAS NO ESTAN COMPLETAS  CONTINUA EL JUEGO    
+            eventoClick(valorCarta,ID);
+            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
                 
-                        }
-                    }         
-//----------------------------------------------------------------------------------------------------------------SI LAS CARTAS NO SON IGUALES 
-                        else{
-             System.out.println(" LAS CARTAS 1 Y 2 NO SON IGUALES "+nuevo.valorcata1()+"/"+nuevo.valorcata2());
-            //oculta cartas
-          
-             //VERIFICA SI SE PUEDE QUITAR ESTRELLAS OPTENIDAS
-             
-                            if(nuevo.getEstrellasOptenidas()>0){
-                               nuevo.disminuirNumeroDeEstrellasOptenidas();//<<---Quita estrellas optenidas
-                            }
-                                siPierde();
-                        }
-                    
+                Object eventSource= event.getSource();
+                Node sourceAsNode = (Node) eventSource;
+                Scene oldScene= sourceAsNode.getScene();
+                Window window =oldScene.getWindow();
+                Stage stage =(Stage) window;
+                stage.hide();
                 
- 
-                    }
-    }
-
+                if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+                    abrirVistaGanaste(stage);
+                }else{
+                    abrirVistaPerdiste(stage);
+                }
+                
+            }
+            
+        
+}
  ////////////////////////// BOTON B3 /////////////////////////////
+
 @FXML
 void cartaElegidaB3(ActionEvent event) throws IOException {
-     contenedorB3.setVisible(true);
+ CartasSeleccionadas();
+    contenedorB3.setVisible(true);
+   
     
+   
 //--------------VALORES DE LA CARTA------//   
 //VALOR ID UNICO DEL BOTON               //
     String ID = "b3";                    //
@@ -770,108 +378,28 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
 //VALOR DEL BOTON                        //   
     int valorCarta=b3;                    //
 //------------------------------------_--//
-        
-//ASIGNA EL VALOR DE LA CARTA 1 Y 2 DE LA CLASE CONTADORES
 
-    //COMPARA QUE CARTA TIENE EL VALOR DE 0
-
-    if(nuevo.valorcata1()==0){
-        //si la carta 1 tiene el valor de 0 le asigna los valores del boton
-
-        
-            nuevo.CambiarValorCarta1(valorCarta);
-
-            nuevo.cambiarIdCarta1(ID);
-
-
-                } else 
-        //si la carta 1 tiene el valor diferente a 0 CONTINUA CON LA VERIFICACION DE VALOR DE LA CARTA 2
-
-                    if(nuevo.valorcata2()==0){
-        //Si la carta 2 tiene el valor de 0 le asigna los valores del boton
-
-         
-                      nuevo.CambiarValorCarta2(valorCarta);
-
-                      nuevo.cambiarIdCarta2(ID);
-
-                                     
-//>>>>>>>>>>>>>>>>>>>CUANDO LA CARTA 1 Y 2 TENGAN VALOR DISTINTO A 0 COMPARA SI LAS CARTAS SON IGUALES<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<      
-
-                        if(nuevo.valorcata2()==nuevo.valorcata1()){
-
-                            if(!nuevo.valorIdCarta1().equals(nuevo.valorIdCarta2())){
-
-//-----------------------------------------------------------------------------------------------------------------SI LAS CARTAS SON IGUALES                         
-                            
-                 //VERIFICA SI SE PUEDE AUMENTAR ESTRELLAS  OPTENIDAS
-                            if(nuevo.getEstrellasOptenidas()<nuevo.getNumeroDeEstrellas()){
-                                  nuevo.aumentarNumeroDeEstrellasOptenidas();//<---aumenta estrellas optenidas
-                            }
-                          
-                            siGana();
-                            
- //???????? COMPRUEBA SI LAS CARTAS ENCONTRADAS ESTAN COMPLETAS????????????
-                             System.out.println("compara numero de cartas "+nuevo.getCartasOptenidas()+"/"+nuevo.getNumeroDeCartas());
-                            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
-                                
-                                Contadores.setEstrellasFinales(nuevo.getEstrellasOptenidas());
-                               
-                             
-       //*****SI LAS CARTAS ESTAN COMPLETAS
-                            
-                        //CIERRA LA INTERFAS ACTUAL
-                                            
-                                             Object eventSource= event.getSource();
-                                             Node sourceAsNode = (Node) eventSource;
-                                             Scene oldScene= sourceAsNode.getScene();
-                                             Window window =oldScene.getWindow();
-                                             Stage stage =(Stage) window;
-                                             stage.hide();
-                                             
-                        //INICIA SIGUIENTE INTERFAS
-                                             
-                                //Comprueba las estrellas del juego para decidir que interfas iniciar
-                                             
-                                             if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
-                                                 
-                                                 
-                                    //si Cumple con las estrellas ,inicia la intefas GANASTE
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Ganaste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }else{
-                                    //NO Cumple con las estrellas ,inicia la interfas PERDISTE
-                                    
-                                                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/Perdiste.fxml"));
-                                                    Scene scene = new Scene(root);
-                                                    stage.setScene(scene);
-                                                    stage.show();
-                                             }
-                            }
-                            
-         //*******SI LAS CARTAS NO ESTAN COMPLETAS  CONTINUA EL JUEGO    
+            eventoClick(valorCarta,ID);
+            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
                 
-                        }
-                    }         
-//----------------------------------------------------------------------------------------------------------------SI LAS CARTAS NO SON IGUALES 
-                        else{
-                            
-             //VERIFICA SI SE PUEDE QUITAR ESTRELLAS OPTENIDAS
-             //oculta cartas
-             ocultarCartas();
-             
-                            if(nuevo.getEstrellasOptenidas()>0){
-                               nuevo.disminuirNumeroDeEstrellasOptenidas();//<<---Quita estrellas optenidas
-                            }
-                                siPierde();
-                        }
-                    
+                Object eventSource= event.getSource();
+                Node sourceAsNode = (Node) eventSource;
+                Scene oldScene= sourceAsNode.getScene();
+                Window window =oldScene.getWindow();
+                Stage stage =(Stage) window;
+                stage.hide();
                 
- 
-                    }
-    }
+                System.out.print("estrellas optenidas"+ nuevo.getEstrellasOptenidas()+"  ");
+                if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+                    abrirVistaGanaste(stage);
+                }else{
+                    abrirVistaPerdiste(stage);
+                }
+                
+            }
+            
+        
+}
 
      int contador=0;
     @Override
@@ -879,16 +407,17 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
      //INICIA LOS VALORES DEL JUEGO
      
             crearCartas();
-            Contadores.reiciarEstrellasOptenidas();
+            nuevo.reiciarEstrellasOptenidas();
             
             //inicia el valor de la dificultad
            nuevo.CambiarDificultad("FACIL");
+  
             //muestra el valor de la dificultad
             labelDificultad.setText(nuevo.getDificultad());
             
             //inicia el numero de estrellas que hay que optener en el juego
-            nuevo.setNumeroDeEstrellas(3);
-            
+            Contadores.setNumeroDeEstrellas(3);
+
             //Asignamos el numero de cartas del juego
             nuevo.setNumeroDeCartas(3);
                       
@@ -914,43 +443,143 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
 
     }   
     
-    public void siPierde(){
-    mostrarestrella(nuevo.getEstrellasOptenidas());
-    nuevo.ReiniciarCartas();
-                            
+    
+    public void CartasSeleccionadas(){
+        
+        if(nuevo.valorcata1()==0&&nuevo.valorcata2()==0){
+            
+            ocultarCartas(); 
+        
+        }
     }
-    public void siGana(){ 
-    nuevo.sumarCartasOptenidas();
-    eliminarCartas(nuevo.valorIdCarta1(),nuevo.valorIdCarta2());
+           
+    public void eventoClick(int valorCarta,String ID){
+        
+        if(asignarvalorCartas(valorCarta,ID)){
+            
+            if(ComparaCartas()){//<<---Cartas son iguales?
+              
+                sonIguales();  
+            
+            }else{
+                
+                NoSonIguales();   
+            }
+                
+        }
+    
+    }
+    public boolean ComparaCartas(){
+        
+        boolean cartasSonIguales=false;
+        if(nuevo.valorcata1()==nuevo.valorcata2()){
+            
+            cartasSonIguales=true;
+ 
+        }
+        System.out.println("Compara cartas 1 / 2 "+nuevo.valorIdCarta1()+"/"+nuevo.valorIdCarta2()+"retorna "+cartasSonIguales);
+        return cartasSonIguales;
+        
+    }
+    
+    
+    public boolean asignarvalorCartas(int valorCarta,String ID){
+            System.out.println("Asigando valor a la carta"); 
+            boolean iniciar=false;
+            
+            if(nuevo.valorcata1()==0){
+                if("".equals(nuevo.valorIdCarta1())){
+                    
+                    System.out.println("valor de la carta 1 es 0 ");
+                    System.out.println("cambia el valor de la carta 1 de: "+nuevo.valorcata1()+" a "+valorCarta);
+                    nuevo.CambiarValorCarta1(valorCarta);
+                    System.out.println("cambia el valor de ID DE la carta1 de: "+nuevo.valorIdCarta1()+" a "+ID);
+                    nuevo.cambiarIdCarta1(ID);
+                    
+                }
+
+            
+
+            }else{
+                if(nuevo.valorcata2()==0){
+                    if(nuevo.valorIdCarta1().equals(ID)){
+
+                    }else{
+                        System.out.println("valor de la carta 1 es 0 ");
+                        System.out.println("cambia el valor de la carta 2 de: "+nuevo.valorcata2()+" a "+valorCarta);
+                        nuevo.CambiarValorCarta2(valorCarta);
+                        System.out.println("cambia el valor de ID DE la carta2 de: "+nuevo.valorIdCarta2()+" a "+ID);
+                        nuevo.cambiarIdCarta2(ID);
+                        iniciar=true;
+                    }
+                }
+            }
+            return iniciar;
+    }
+    public void abrirVistaGanaste(Stage stage) throws IOException{
+            System.out.println("Abre venta ganaste ");
+            Parent root = FXMLLoader.load(getClass().getResource("/vistas/Ganaste.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+    }
+    
+    public void abrirVistaPerdiste(Stage stage) throws IOException{
+            System.out.print("la estrellas cargan "+nuevo.getEstrellasOptenidas());
+            Contadores.setEstrellasFinales(nuevo.getEstrellasOptenidas());
+            System.out.println("Abre venta Perdiste ");
+            Parent root = FXMLLoader.load(getClass().getResource("/vistas/Perdiste.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            
+    }
+    public void NoSonIguales(){
+        
+        System.out.println("No son iguales");
+        nuevo.disminuirNumeroDeEstrellasOptenidas();
+        mostrarestrella(nuevo.getEstrellasOptenidas());
+        nuevo.ReiniciarCartas();
+        
                        
-    mostrarestrella(nuevo.getEstrellasOptenidas());
-    nuevo.ReiniciarCartas();
+    }
+    public void sonIguales(){ 
+        System.out.println("son iguales ");
+        nuevo.sumarCartasOptenidas();
+        nuevo.aumentarNumeroDeEstrellasOptenidas();
+        System.out.print("Las estreñas optenidaso son ---->"+nuevo.getEstrellasOptenidas());
+        mostrarestrella(nuevo.getEstrellasOptenidas());
+        eliminarCarta1();
+        eliminarCarta2();
+        nuevo.ReiniciarCartas();
+        
     }
     
-    //METODO QUE MUESTRA O OCULTA  ESTRELLA EN LA INTERFAS GRAFICA
+ //METODO QUE MUESTRA O OCULTA  ESTRELLA EN LA INTERFAS GRAFICA
     
-    public void mostrarestrella(int num){
+   public void mostrarestrella(int num){
         switch(num){
             case 0:
-            System.out.print("mostramos 0");
+            System.out.println("mostramos 0 estrellas");
                   Estrella1.setVisible(false);
                   Estrella2.setVisible(false);
                   Estrella3.setVisible(false);   
                   break;
             case 1:
-            System.out.print("mostramos 1");
+            System.out.println("mostramos 1 estrella");
                   Estrella1.setVisible(true);
                   Estrella2.setVisible(false);
                   Estrella3.setVisible(false);   
                   break;
             case 2:
-                            System.out.print("mostramos 1");
+            System.out.println("mostramos 2 estrellas");
                   Estrella1.setVisible(true);
                   Estrella2.setVisible(true);
                   Estrella3.setVisible(false);   
                   break;
             case 3:
-                            System.out.print("mostramos 1");
+            System.out.println("mostramos 3 estrellas");
                   Estrella1.setVisible(true);
                   Estrella2.setVisible(true);
                   Estrella3.setVisible(true);   
@@ -1033,7 +662,8 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
          
             }
     }
-        public void PosicionaCarta2(String id1,juegoNuevo Carta){
+    
+    public void PosicionaCarta2(String id1,juegoNuevo Carta){
             
             switch(id1){
                 case "A1":
@@ -1072,38 +702,40 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
     //METODO QUE OCULTA CARTAS
     
     public void ocultarCartas(){
+        System.out.println("--Ocultando cartas--");
         
             contenedorA1.setVisible(false);contenedorA2.setVisible(false);contenedorA3.setVisible(false);
             contenedorB1.setVisible(false);contenedorB2.setVisible(false);contenedorB3.setVisible(false);
     }
     
     //metodo que elimina la primer carta y invoca al metodo para eliminar la segunda carta 
-    public void eliminarCartas(String id1,String id2){
-        switch(id1){
+    public void eliminarCarta1(){
+        System.out.println("Elimina carta 1 con ID: "+nuevo.valorIdCarta1());
+        switch(nuevo.valorIdCarta1()){
             case "a1":
                
-               eliminarSegundaCarta(id2);btna1.setVisible(false);
+               btna1.setVisible(false);
                break;
             case "a2":
                 
-                eliminarSegundaCarta(id2);btna2.setVisible(false);
+                btna2.setVisible(false);
                 break;
             case "a3":
                
-                eliminarSegundaCarta(id2); btna3.setVisible(false);
+                btna3.setVisible(false);
                 break;
             case "b1":
                 
-                eliminarSegundaCarta(id2);btnb1.setVisible(false);
+                btnb1.setVisible(false);
                 break;
             case "b2":
                 
-                eliminarSegundaCarta(id2);btnb2.setVisible(false);
+                btnb2.setVisible(false);
                 break;
         
             case "b3":
                
-                eliminarSegundaCarta(id2); btnb3.setVisible(false);
+                 btnb3.setVisible(false);
                 break;
                
         }
@@ -1113,9 +745,9 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
     
     
     //metodo que elimina la segunda carta
-    public void eliminarSegundaCarta(String id){
-        
-        switch(id){
+    public void eliminarCarta2(){
+           System.out.println("Elimina carta 2 con ID: "+nuevo.valorIdCarta2());
+        switch(nuevo.valorIdCarta2()){
             case "a1":
                 btna1.setVisible(false);
                 break;

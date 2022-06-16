@@ -78,7 +78,7 @@ public class GanasteController implements Initializable  {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        switch(Contadores.getEstrellasFinales()){
+        switch(Contadores.getNumeroDeEstrellas()){
             case 3:
                 estrella1.setVisible(true);
                 estrella2.setVisible(true);
