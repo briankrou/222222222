@@ -599,105 +599,192 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         Carta1.juegoNuevo(1);
         Carta2.juegoNuevo(2);
         Carta3.juegoNuevo(3);
+                  carta1(Carta1);
+                  carta1(Carta2);
+                  carta1(Carta3);
+                  
+                  
+            
         
-        
-        PosicionaCartas("A1","B3",Carta1);
-        PosicionaCartas("A3","B1",Carta2);
-        PosicionaCartas("A2","B2",Carta3);
+
         
 }
-    
-    public void PosicionaCartas(String id1,String id2,juegoNuevo Carta){
-            
-            switch(id1){
-                case "A1":
-                    TextA1L1=String.valueOf(Carta.getNumero1());
-                    TextA1L2=Carta.getOperador();
-                    TextA1L3=String.valueOf(Carta.getNumero2());
+
+    public void carta1(juegoNuevo Carta){
+                System.out.println("INICIAAAA CARTA ------------------1");
+            int contador2=0;
+
+        while(contador2<1){
+            switch(nuevo.numeroaleatorio("FACIL")){
+                case 0:
+                       
+                    if(a1==0){
+                        System.out.println("1>>>carta A1 es "+a1);
+
+                        TextA1L1=String.valueOf(Carta.getNumero1());
+                        TextA1L2=Carta.getOperador();
+                        TextA1L3=String.valueOf(Carta.getNumero2());
                     
-                    System.out.println("carta A1 es "+Carta.getResultado());
-                    a1=Carta.getResultado();
-                    PosicionaCarta2(id2,Carta);
-                    break;
-                case "A2":
-                    TextA2L1=String.valueOf(Carta.getNumero1());
-                    TextA2L2=Carta.getOperador();
-                    TextA2L3=String.valueOf(Carta.getNumero2());
-                     System.out.println("carta A1 es "+Carta.getResultado());
-                    a2=Carta.getResultado();
-                    PosicionaCarta2(id2,Carta);
-                    break;
-                case "A3":
-                    TextA3L1=String.valueOf(Carta.getNumero1());
-                    TextA3L2=Carta.getOperador();
-                    TextA3L3=String.valueOf(Carta.getNumero2());
-                     System.out.println("carta A1 es "+Carta.getResultado());
-                    a3=Carta.getResultado();
-                    PosicionaCarta2(id2,Carta);
-                    break;
-                case "B1":
-                    TextB1L1=String.valueOf(Carta.getNumero1());
-                    TextB1L2=Carta.getOperador();
-                    TextB1L3=String.valueOf(Carta.getNumero2());
-                     System.out.println("carta A1 es "+Carta.getResultado());
-                    b1=Carta1.getResultado();
-                    PosicionaCarta2(id2,Carta);
-                    break;
-                case "B2":
-                    TextB2L1=String.valueOf(Carta.getNumero1());
-                    TextB2L2=Carta.getOperador();
-                    TextB2L3=String.valueOf(Carta.getNumero2());
-                     System.out.println("carta A1 es "+Carta.getResultado());
-                    b2=Carta.getResultado();
-                    PosicionaCarta2(id2,Carta);
-                    break; 
-                case "B3":
-                    TextB3L1=String.valueOf(Carta.getNumero1());
-                    TextB3L2=Carta.getOperador();
-                    TextB3L3=String.valueOf(Carta.getNumero2());
-                     System.out.println("carta A1 es "+Carta.getResultado());
-                    b3=Carta.getResultado();
-                    PosicionaCarta2(id2,Carta);
-                    break; 
-         
-            }
+                        System.out.println("1----carta A1 es "+Carta.getResultado());
+                        a1=Carta.getResultado();
+                        PosicionaCarta2(Carta);
+                        contador2++;
+                        break;
+                    }
+                    
+                case 1:
+                    if(a2==0){
+                        System.out.println("1>>>carta A2 es "+a2);
+
+                        TextA2L1=String.valueOf(Carta.getNumero1());
+                        TextA2L2=Carta.getOperador();
+                        TextA2L3=String.valueOf(Carta.getNumero2());
+                    
+                        System.out.println("1---carta A2 es "+Carta.getResultado());
+                        a2=Carta.getResultado();
+                        PosicionaCarta2(Carta);
+                        contador2++;
+                        break;
+                    }
+                case 2:
+                    if(a3==0){
+                        System.out.println("1>>>carta A3 es "+a3);
+                        
+                        TextA3L1=String.valueOf(Carta.getNumero1());
+                        TextA3L2=Carta.getOperador();
+                        TextA3L3=String.valueOf(Carta.getNumero2());
+                    
+                        System.out.println("1---carta A3 es "+Carta.getResultado());
+                        a3=Carta.getResultado();
+                        PosicionaCarta2(Carta);
+                        contador2++;
+                        break;
+                    }
+                case 3:
+                    if(b1==0){
+                        System.out.println("1>>>carta B1 es "+b1);
+                        
+                        TextB1L1=String.valueOf(Carta.getNumero1());
+                        TextB1L2=Carta.getOperador();
+                        TextB1L3=String.valueOf(Carta.getNumero2());
+                    
+                        System.out.println("1---carta B1 es "+Carta.getResultado());
+                        b1=Carta.getResultado();
+                        PosicionaCarta2(Carta);
+                        contador2++;
+                        break;
+                    }
+                case 4:
+                    if(b2==0){
+                        System.out.println("1>>>carta B2 es "+b2);
+                        
+                        TextB2L1=String.valueOf(Carta.getNumero1());
+                        TextB2L2=Carta.getOperador();
+                        TextB2L3=String.valueOf(Carta.getNumero2());
+                    
+                        System.out.println("1---carta B2 es "+Carta.getResultado());
+                        b2=Carta.getResultado();
+                        PosicionaCarta2(Carta);
+                        contador2++;
+                        break;
+                    }
+                case 5:
+                    if(b3==0){
+                        System.out.println("1>>>carta B3 es "+b3);
+                        
+                        TextB3L1=String.valueOf(Carta.getNumero1());
+                        TextB3L2=Carta.getOperador();
+                        TextB3L3=String.valueOf(Carta.getNumero2());
+                    
+                        System.out.println("1---carta B3 es "+Carta.getResultado());
+                        b3=Carta.getResultado();
+                        PosicionaCarta2(Carta);
+                        contador2++;
+                        break;
+                    }
+            }   
+        }
     }
+
     
-    public void PosicionaCarta2(String id1,juegoNuevo Carta){
+  
+            int contador3=0;
+    public void PosicionaCarta2(juegoNuevo Carta){
+
+     System.out.println("INICIAAAA CARTA----------------- 2");
+     
+            int contador2=0;
+
+        while(contador2<1){
+            switch(nuevo.numeroaleatorio("FACIL")){
+                
+                case 0:
+                    if(a1==0){
+                        System.out.println("2>>>carta A1 es "+a1);
+                           
+                        TextA1L2=String.valueOf(Carta.getResultado());
+                        a1=Carta.getResultado();
+                        System.out.println("2---carta A1 es "+a1); 
+                        contador2++;
+                        break;
+                    }
+
+                case 1:
+                    if(a2==0){
+                        System.out.println("2>>>carta A2 es "+a2);
+                        TextA2L2=String.valueOf(Carta.getResultado());
+                        a2=Carta.getResultado();
+                         System.out.println("2---carta A2 es "+a2); 
+                         contador2++;
+           
+                        break;
+                    }
+                case 2:
+                    if(a3==0){
+                        System.out.println("2>>>carta A3 es "+a3);  
+                        TextA3L2=String.valueOf(Carta.getResultado());
+                        a3=Carta.getResultado();
+                         System.out.println("2---carta A3 es "+a3); 
+                         contador2++;
+           
+                        break;
+                    }
+                case 3:
+                    if(b1==0){
+                        System.out.println("2>>>carta B1 es "+b1);  
+                        TextB1L2=String.valueOf(Carta.getResultado());
+                        b1=Carta.getResultado();
+                         System.out.println("2---carta B1 es "+b1);
+                         contador2++;
+                  
+                        break;
+                    }
+                case 4:
+                    if(b2==0){
+                        System.out.println("2>>>carta B2 es "+b2);    
+                        TextB2L2=String.valueOf(Carta.getResultado());
+                        b2=Carta.getResultado();
+                        System.out.println("2---carta B2 es "+b2); 
+                        contador2++;
+           
+                        break;
+                    }
+                case 5:
+                    if(b3==0){
+                        System.out.println("2>>>carta B3 es "+b3);  
+                        TextB3L2=String.valueOf(Carta.getResultado());
+                        b3=Carta.getResultado();
+                        System.out.println("2---carta B3 es "+b3); 
+                        contador2++;
+                
+                        break;
+                    }
             
-            switch(id1){
-                case "A1":
-
-                    TextA1L2=String.valueOf(Carta.getResultado());
-                    a1=Carta.getResultado();
-                    break;
-                case "A2":
-                    TextA2L2=String.valueOf(Carta.getResultado());
-                    a2=Carta.getResultado();
-                    break;
-                case "A3":
-                    TextA3L2=String.valueOf(Carta.getResultado());
-                    a3=Carta.getResultado();
-                    break;
-                case "B1":
-                    TextB1L2=String.valueOf(Carta.getResultado());
-                    b1=Carta.getResultado();
-                    break;
-                case "B2":
-                    TextB2L2=String.valueOf(Carta.getResultado());
-                    b2=Carta.getResultado();
-                    break; 
-                case "B3":
-    
-                    TextB3L2=String.valueOf(Carta.getResultado());
-                    b3=Carta.getResultado();
-                    break; 
-         
-            }
-    }
+     }
+    }}
 
 
-
+        
 
     //METODO QUE OCULTA CARTAS
     

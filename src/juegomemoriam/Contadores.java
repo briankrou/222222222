@@ -44,24 +44,12 @@ int  numeroDeCartas;
 public static  int getNumeroDeEstrellas(){
     return NumeroDeEstrellas;
 }
-//RETORNA EL NUMERO DE ESTRELLAS OPTENIDAS 
-public  int getEstrellasOptenidas(){
-    return Estrellasoptenidas;
-}
 
 //METODO RETORNA NUMERO DE ESTRELLAS DEL JUEGO 
 public static  void setNumeroDeEstrellas(int num){
     NumeroDeEstrellas=num;
 }
-//RETORNA LAS ESTRELLAS FINALES 
-public static int getEstrellasFinales(){
-    return EstrelalsoptenidasFinales;
-}
-//RETORNA NUMERO DE CARYAS DEL JUEGO SEGUN EL NIVEL 
 
-public int getNumeroDeCartas(){
-    return numeroDeCartas;
-}
 // CAMBIA EL NUMERO DE CARTAS QUE HAY QUE DESTAPAR 
 
 public void setNumeroDeCartas(int num){
@@ -76,10 +64,7 @@ public  void reiciarEstrellasOptenidas(){
     System.out.print("recinicai estrellas a "+Estrellasoptenidas);
 }
 
-//RETORNA EL NIVEL DEL JUEGO
-public static int getNivel(){
-    return nivel;
-}
+
 //REINICIA LAS CARTAS ELEGIDAS 1 Y 2
 public  void ReiniciarCartas(){
     carta1=0;
@@ -89,18 +74,11 @@ public  void ReiniciarCartas(){
     
     System.out.println("Reinicia carta 1 a valor : "+carta1+" y ID "+IDcarta1+"\ncarta 2 a valor: "+carta2+" y ID "+IDcarta2);
 }
-///-----------------------------------------------------Metodos Set-----------------------------------------------------------
-
-
-
 
 //METODO CAMBIA LAS ESTRELLAS FINAL DEL JUEGO PARA MOSTRAR CUANDO GANA O PIERDE 
 public static void setEstrellasFinales(int num){
     EstrelalsoptenidasFinales=num;
 }
-
-
-
 //METODO AYUDO AUMENTA LAS ESTRELLAS 
 public  void aumentarNumeroDeEstrellasOptenidas(){
 
@@ -113,7 +91,6 @@ public  void aumentarNumeroDeEstrellasOptenidas(){
     
 
 }
-
 //METODO RESTA ESTRELLAS 
 public void disminuirNumeroDeEstrellasOptenidas(){
     System.out.println("menos una estrella");
@@ -123,16 +100,51 @@ public void disminuirNumeroDeEstrellasOptenidas(){
        }
         
 }
-
-
-
-
-
-
+//SUBE EL NIVEL A MEDIAD QUE GANA 
+public static void  Subirnivel(){
+    nivel++;
+}
+//REINICIA EL CONTADOR DE NIVELES 
+public static void reiniciarNivel(){
+    nivel=0;
+}
+//CAMBIA EL VALOR DE LA CARTA 1 QUE ES PARA COMPARAR CARTAS SELECCIONADAS
+public  void CambiarValorCarta1(int num){
+    carta1=num;
+}
+//CAMBIA EL VALOR DE LA CARTA 2 QUE ES PARA COMPARAR CARTAS SELECCIONADAS
+public  void CambiarValorCarta2(int num){
+    carta2=num;
+}
 //SUMA A EL CONTADOR DE CARTAS OPTENIDAS A MEDIA QUE LAS ENCUENTRA 
 
 public  void sumarCartasOptenidas(){
     cartasOptenidas++;
+}
+
+//CAMBIA EL ID CARTA 1
+public  void cambiarIdCarta1(String id){
+    IDcarta1=id;
+}
+///-----------------------------------------------------Metodos Set-----------------------------------------------------------
+
+//RETORNA EL NUMERO DE ESTRELLAS OPTENIDAS 
+public  int getEstrellasOptenidas(){
+    return Estrellasoptenidas;
+}
+
+//RETORNA LAS ESTRELLAS FINALES 
+public static int getEstrellasFinales(){
+    return EstrelalsoptenidasFinales;
+}
+//RETORNA NUMERO DE CARYAS DEL JUEGO SEGUN EL NIVEL 
+
+public int getNumeroDeCartas(){
+    return numeroDeCartas;
+}
+//RETORNA EL NIVEL DEL JUEGO
+public static int getNivel(){
+    return nivel;
 }
 
 //RESTONA EL NUMERO DE CARTAS OPTENIDAS 
@@ -142,10 +154,7 @@ public  int  getCartasOptenidas(){
     return cartasOptenidas;
     
 }
-//CAMBIA EL 
-public  void cambiarIdCarta1(String id){
-    IDcarta1=id;
-}
+
 //CAMBIA EL VALOR DEL ID DE LA CARTA 2 PARA POSTERIO COMPARAR 
 public void cambiarIdCarta2(String id){
     IDcarta2=id;
@@ -158,14 +167,6 @@ public String valorIdCarta1(){
 public  String valorIdCarta2(){
     return IDcarta2;
 }
-//SUBE EL NIVEL A MEDIAD QUE GANA 
-public static void  Subirnivel(){
-    nivel++;
-}
-//REINICIA EL CONTADOR DE NIVELES 
-public static void reiniciarNivel(){
-    nivel=0;
-}
 
 //CAMBIA EL TEXTO DE DIFICULTAD 
 public  void CambiarDificultad(String dificultad){
@@ -175,14 +176,7 @@ public  void CambiarDificultad(String dificultad){
 public   String getDificultad(){
     return Dificultad;
 }
-//CAMBIA EL VALOR DE LA CARTA 1 QUE ES PARA COMPARAR CARTAS SELECCIONADAS
-public  void CambiarValorCarta1(int num){
-    carta1=num;
-}
-//CAMBIA EL VALOR DE LA CARTA 2 QUE ES PARA COMPARAR CARTAS SELECCIONADAS
-public  void CambiarValorCarta2(int num){
-    carta2=num;
-}
+
 //RETORNA EL CALOR DE LA CARTA 1 QUE ES PARA COMPARAR CARTAS SELECCIONADAS
 public  int valorcata1(){
     return carta1;

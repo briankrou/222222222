@@ -17,11 +17,11 @@ public class iniciar extends Contadores{
         switch(dificultad){
             
             case "FACIL":
-                n=6;
+                n=5;
         }
                 Random rd = new Random();
                 int numeroAleatorio = rd.nextInt(n);
-                System.out.println("posicion "+numeroAleatorio);
+                System.out.println("nuemero aleatorio "+numeroAleatorio);
                 return numeroAleatorio;
     }
 }
