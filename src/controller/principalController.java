@@ -24,12 +24,31 @@ import javafx.stage.Window;
  * @author BrianKrou
  */
 public class principalController implements Initializable {
+        @FXML
+    private Button btnInformacion;
 
     @FXML
     private Button btniniciar;
 
     @FXML
     private Label label;
+    @FXML
+    void abrirInformacion(ActionEvent event) throws IOException {
+        
+        System.out.print("funciona nnn");
+       Object eventSource= event.getSource();
+       Node sourceAsNode = (Node) eventSource;
+       Scene oldScene= sourceAsNode.getScene();
+       Window window =oldScene.getWindow();
+       Stage stage =(Stage) window;
+       stage.hide();
+
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/vistas/VistaInformacion.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     
     @FXML
     void Exit(ActionEvent event) {
