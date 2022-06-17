@@ -78,10 +78,10 @@ public static boolean asignarvalorCartasSeleccionadas(int valorCarta,String ID){
 
             }else{
                 if(carta2==0){
-                    if(IDcarta2.equals(ID)){
+                    if(IDcarta1 == null ? ID == null : IDcarta1.equals(ID)){
 
                     }else{
-                        System.out.println("valor de la carta 1 es 0 ");
+                        System.out.println("valor de la carta 2 es 0 ");
                         System.out.println("cambia el valor de la carta 2 de: "+carta2+" a "+valorCarta);
                         carta2=valorCarta;
                         System.out.println("cambia el valor de ID DE la carta2 de: "+IDcarta2+" a "+ID);

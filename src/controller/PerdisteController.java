@@ -20,7 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import juegomemoriam.Contadores;
-import juegomemoriam.iniciar;
+
 
 /**
  * FXML Controller class

@@ -4,6 +4,8 @@
  */
 package juegomemoriam;
 
+import java.util.Random;
+
 
 /**
  *
@@ -161,6 +163,18 @@ public static  String getDificultad(){
 
 
 
+    public static int numeroaleatorio(String dificultad){
+        int n=0;
+        switch(dificultad){
+            
+            case "FACIL":
+                n=5;
+        }
+                Random rd = new Random();
+                int numeroAleatorio = rd.nextInt(n);
+                System.out.println("nuemero aleatorio "+numeroAleatorio);
+                return numeroAleatorio;
+    }
 
 
     

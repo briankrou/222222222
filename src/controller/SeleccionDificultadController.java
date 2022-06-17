@@ -18,7 +18,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import juegomemoriam.Contadores;
-import juegomemoriam.iniciar;
+
 
 /**
  * FXML Controller class
@@ -29,7 +29,7 @@ public class SeleccionDificultadController implements Initializable {
     
 
     
-    iniciar nuevo=new iniciar();
+    Contadores nuevo=new Contadores();
 
        @FXML
     private Button btndificil;

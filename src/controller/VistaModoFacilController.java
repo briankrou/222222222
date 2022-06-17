@@ -22,9 +22,8 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import juegomemoriam.ComparadorDeCartas;
 import juegomemoriam.Contadores;
-import juegomemoriam.iniciar;
 import juegomemoriam.ParejaDeCartas;
-import juegomemoriam.sound;
+
 
 /**
  * FXML Controller class
@@ -35,9 +34,9 @@ public class VistaModoFacilController implements Initializable {
 
 int nivelinicial;
     int cartasSeleccionadas=0;
-    sound reproduce = new sound();
 
-    iniciar nuevo=new iniciar();
+
+    Contadores nuevo=new Contadores();
     
     ParejaDeCartas[] arreglo=new ParejaDeCartas[2];
     @FXML
@@ -204,7 +203,7 @@ void cartaElegidaA1(ActionEvent event) throws IOException {
         Stage stage =(Stage) window;
         stage.hide();
                 
-        if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+        if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
             abrirVistaGanaste(stage);
         }else{
             abrirVistaPerdiste(stage);
@@ -237,7 +236,7 @@ void cartaElegidaA2(ActionEvent event) throws IOException {
                 Stage stage =(Stage) window;
                 stage.hide();
                 
-                if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+                if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
                     abrirVistaGanaste(stage);
                 }else{
                     abrirVistaPerdiste(stage);
@@ -283,7 +282,7 @@ void cartaElegidaA3(ActionEvent event) throws IOException {
                                              
                                 //Comprueba las estrellas del juego para decidir que interfas iniciar
                                              
-                if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+                if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
                     abrirVistaGanaste(stage);
                 }else{
                     abrirVistaPerdiste(stage);
@@ -321,7 +320,7 @@ void cartaElegidaB1(ActionEvent event) throws IOException {
                 Stage stage =(Stage) window;
                 stage.hide();
                 
-                if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+                if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
                     abrirVistaGanaste(stage);
                 }else{
                     abrirVistaPerdiste(stage);
@@ -355,7 +354,7 @@ void cartaElegidaB2(ActionEvent event) throws IOException {
                 Stage stage =(Stage) window;
                 stage.hide();
                 
-                if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+                if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
                     abrirVistaGanaste(stage);
                 }else{
                     abrirVistaPerdiste(stage);
@@ -393,7 +392,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
                 stage.hide();
                 
                 System.out.print("estrellas optenidas"+ nuevo.getEstrellasOptenidas()+"  ");
-                if(nuevo.getEstrellasOptenidas()==nuevo.getNumeroDeEstrellas()){
+                if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
                     abrirVistaGanaste(stage);
                 }else{
                     abrirVistaPerdiste(stage);
@@ -578,7 +577,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
             int contador2=0;
 
         while(contador2<1){
-            switch(nuevo.numeroaleatorio("FACIL")){
+            switch(Contadores.numeroaleatorio("FACIL")){
                 case 0:
                        
                     if(a1==0){
@@ -679,7 +678,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
             int contador2=0;
 
         while(contador2<1){
-            switch(nuevo.numeroaleatorio("FACIL")){
+            switch(Contadores.numeroaleatorio("FACIL")){
                 
                 case 0:
                     if(a1==0){

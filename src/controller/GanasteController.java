@@ -21,7 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import juegomemoriam.iniciar;
+
  
 
 /**
@@ -134,7 +134,7 @@ public class GanasteController implements Initializable  {
     
     
     public static void  nivel(){
-        iniciar.Subirnivel();
+        Contadores.Subirnivel();
         
 
     }
