@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import juegomemoriam.ComparadorDeCartas;
 import juegomemoriam.Contadores;
 import juegomemoriam.iniciar;
 import juegomemoriam.juegoNuevo;
@@ -448,7 +449,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
     
     public void CartasSeleccionadas(){
         
-        if(nuevo.valorcata1()==0&&nuevo.valorcata2()==0){
+        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
             
             ocultarCartas(); 
         
@@ -457,9 +458,9 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
            
     public void eventoClick(int valorCarta,String ID){
         
-        if(asignarvalorCartas(valorCarta,ID)){
+        if(ComparadorDeCartas.asignarvalorCartasSeleccionadas(valorCarta,ID)){
             
-            if(ComparaCartas()){//<<---Cartas son iguales?
+            if(ComparadorDeCartas.ComparaCartas()){//<<---Cartas son iguales?
               
                 sonIguales();  
             
@@ -471,53 +472,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         }
     
     }
-    public boolean ComparaCartas(){
-        
-        boolean cartasSonIguales=false;
-        if(nuevo.valorcata1()==nuevo.valorcata2()){
-            
-            cartasSonIguales=true;
- 
-        }
-        System.out.println("Compara cartas 1 / 2 "+nuevo.valorIdCarta1()+"/"+nuevo.valorIdCarta2()+"retorna "+cartasSonIguales);
-        return cartasSonIguales;
-        
-    }
-    
-    
-    public boolean asignarvalorCartas(int valorCarta,String ID){
-            System.out.println("Asigando valor a la carta"); 
-            boolean iniciar=false;
-            
-            if(nuevo.valorcata1()==0){
-                if("".equals(nuevo.valorIdCarta1())){
-                    
-                    System.out.println("valor de la carta 1 es 0 ");
-                    System.out.println("cambia el valor de la carta 1 de: "+nuevo.valorcata1()+" a "+valorCarta);
-                    nuevo.CambiarValorCarta1(valorCarta);
-                    System.out.println("cambia el valor de ID DE la carta1 de: "+nuevo.valorIdCarta1()+" a "+ID);
-                    nuevo.cambiarIdCarta1(ID);
-                    
-                }
 
-            
-
-            }else{
-                if(nuevo.valorcata2()==0){
-                    if(nuevo.valorIdCarta1().equals(ID)){
-
-                    }else{
-                        System.out.println("valor de la carta 1 es 0 ");
-                        System.out.println("cambia el valor de la carta 2 de: "+nuevo.valorcata2()+" a "+valorCarta);
-                        nuevo.CambiarValorCarta2(valorCarta);
-                        System.out.println("cambia el valor de ID DE la carta2 de: "+nuevo.valorIdCarta2()+" a "+ID);
-                        nuevo.cambiarIdCarta2(ID);
-                        iniciar=true;
-                    }
-                }
-            }
-            return iniciar;
-    }
     public void abrirVistaGanaste(Stage stage) throws IOException{
             System.out.println("Abre venta ganaste ");
             Parent root = FXMLLoader.load(getClass().getResource("/vistas/Ganaste.fxml"));
@@ -544,7 +499,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         mostrarestrella(nuevo.getEstrellasOptenidas());
        Contadores.RestarPuntos();
         Puntos.setText(String.valueOf(Contadores.getPuntos()));
-        nuevo.ReiniciarCartas();
+        ComparadorDeCartas.reiniciarCartas();
  
         
                        
@@ -560,7 +515,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         Contadores.SumarPuntos();
 
          Puntos.setText(String.valueOf(Contadores.getPuntos()));
-        nuevo.ReiniciarCartas();
+        ComparadorDeCartas.reiniciarCartas();
         
     }
     
@@ -805,10 +760,10 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
     
     //metodo que elimina la primer carta y invoca al metodo para eliminar la segunda carta 
     public void eliminarCarta1(){
-        System.out.println("Elimina carta 1 con ID: "+nuevo.valorIdCarta1());
-        switch(nuevo.valorIdCarta1()){
+        System.out.println("Elimina carta 1 con ID: "+ComparadorDeCartas.getIDcarta1());
+        switch(ComparadorDeCartas.getIDcarta1()){
             case "a1":
-               
+          
                btna1.setVisible(false);
                break;
             case "a2":
@@ -841,8 +796,8 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
     
     //metodo que elimina la segunda carta
     public void eliminarCarta2(){
-           System.out.println("Elimina carta 2 con ID: "+nuevo.valorIdCarta2());
-        switch(nuevo.valorIdCarta2()){
+           System.out.println("Elimina carta 2 con ID: "+ComparadorDeCartas.getIDcarta2());
+        switch(ComparadorDeCartas.getIDcarta2()){
             case "a1":
                 btna1.setVisible(false);
                 break;

@@ -19,13 +19,7 @@ static int nivel=0;
 
 static String Dificultad;
 
-int carta1=0;
 
-int carta2=0;
-
-String IDcarta1="";
-
-String IDcarta2="";
 
 int Estrellasoptenidas; 
 
@@ -85,16 +79,6 @@ public  void reiciarEstrellasOptenidas(){
 }
 
 
-//REINICIA LAS CARTAS ELEGIDAS 1 Y 2
-public  void ReiniciarCartas(){
-    carta1=0;
-    carta2=0;
-    IDcarta1="";
-    IDcarta2="";
-    
-    System.out.println("Reinicia carta 1 a valor : "+carta1+" y ID "+IDcarta1+"\ncarta 2 a valor: "+carta2+" y ID "+IDcarta2);
-}
-
 //METODO CAMBIA LAS ESTRELLAS FINAL DEL JUEGO PARA MOSTRAR CUANDO GANA O PIERDE 
 public static void setEstrellasFinales(int num){
     EstrelalsoptenidasFinales=num;
@@ -128,24 +112,13 @@ public static void  Subirnivel(){
 public static void reiniciarNivel(){
     nivel=0;
 }
-//CAMBIA EL VALOR DE LA CARTA 1 QUE ES PARA COMPARAR CARTAS SELECCIONADAS
-public  void CambiarValorCarta1(int num){
-    carta1=num;
-}
-//CAMBIA EL VALOR DE LA CARTA 2 QUE ES PARA COMPARAR CARTAS SELECCIONADAS
-public  void CambiarValorCarta2(int num){
-    carta2=num;
-}
+
 //SUMA A EL CONTADOR DE CARTAS OPTENIDAS A MEDIA QUE LAS ENCUENTRA 
 
 public  void sumarCartasOptenidas(){
     cartasOptenidas++;
 }
 
-//CAMBIA EL ID CARTA 1
-public  void cambiarIdCarta1(String id){
-    IDcarta1=id;
-}
 ///-----------------------------------------------------Metodos Set-----------------------------------------------------------
 
 //RETORNA EL NUMERO DE ESTRELLAS OPTENIDAS 
@@ -175,18 +148,7 @@ public  int  getCartasOptenidas(){
     
 }
 
-//CAMBIA EL VALOR DEL ID DE LA CARTA 2 PARA POSTERIO COMPARAR 
-public void cambiarIdCarta2(String id){
-    IDcarta2=id;
-}
-//RETORNA EL VALOR DEL ID DE LA CARTA 1
-public String valorIdCarta1(){
-    return IDcarta1;
-}
-//RETORNA EL VALOR DEL ID DE LA CARTA 2
-public  String valorIdCarta2(){
-    return IDcarta2;
-}
+
 
 //CAMBIA EL TEXTO DE DIFICULTAD 
 public static  void CambiarDificultad(String dificultad){
@@ -197,14 +159,7 @@ public static  String getDificultad(){
     return Dificultad;
 }
 
-//RETORNA EL CALOR DE LA CARTA 1 QUE ES PARA COMPARAR CARTAS SELECCIONADAS
-public  int valorcata1(){
-    return carta1;
-}
-//RETORNA EL VALOR DE LA CARTA 2 QUE ES PARA COMPARAR CARTAS SELECCIONADAS
-public int valorcata2(){
-    return carta2;
-}
+
 
 
 
