@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -29,8 +30,12 @@ import juegomemoriam.iniciar;
  * @author BrianKrou
  */
 public class GanasteController implements Initializable  {
+    @FXML
+    private Label puntos;
 
-
+   @FXML
+    private Button btnSalir;
+   
     @FXML
     private ImageView estrella1;
 
@@ -48,6 +53,27 @@ public class GanasteController implements Initializable  {
     
     @FXML
     private Button btnGanasteAceptar;
+   @FXML
+    void Exit(ActionEvent event) throws IOException {
+        
+        
+        Object eventSource= event.getSource();
+        Node sourceAsNode = (Node) eventSource;
+        Scene oldScene= sourceAsNode.getScene();
+        Window window =oldScene.getWindow();
+        Stage stage =(Stage) window;
+        stage.hide();
+        
+        Contadores.reiniciarNivel();
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/vistas/principal.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        
+        
+        
+    }
 
     @FXML
     void pasarnivel(ActionEvent event) throws IOException {
@@ -77,6 +103,10 @@ public class GanasteController implements Initializable  {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        //puntos acomulados
+        puntos.setText(String.valueOf(Contadores.getPuntos()));
+        
         // TODO
         switch(Contadores.getNumeroDeEstrellas()){
             case 3:

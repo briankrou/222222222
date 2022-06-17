@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import juegomemoriam.Contadores;
 import juegomemoriam.iniciar;
 
 /**
@@ -69,10 +70,13 @@ public class SeleccionDificultadController implements Initializable {
        Stage stage =(Stage) window;
        stage.hide();
        
+       Contadores.CambiarDificultad("FACIL");
+       
         Parent root = FXMLLoader.load(getClass().getResource("/vistas/VistaModoFacil.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        
        
     }
 
@@ -94,7 +98,7 @@ public class SeleccionDificultadController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      
+      Contadores.ReiniciarPuntos();
     }
     
     

@@ -39,6 +39,8 @@ int nivelinicial;
     iniciar nuevo=new iniciar();
     
     juegoNuevo[] arreglo=new juegoNuevo[2];
+    @FXML
+    private Label Puntos;
       @FXML
     private HBox contenedorA1;
 
@@ -405,15 +407,15 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      //INICIA LOS VALORES DEL JUEGO
+            //puntos acomulados
+            Puntos.setText(String.valueOf(Contadores.getPuntos()));
      
             crearCartas();
             nuevo.reiciarEstrellasOptenidas();
             
-            //inicia el valor de la dificultad
-           nuevo.CambiarDificultad("FACIL");
   
             //muestra el valor de la dificultad
-            labelDificultad.setText(nuevo.getDificultad());
+            labelDificultad.setText(Contadores.getDificultad());
             
             //inicia el numero de estrellas que hay que optener en el juego
             Contadores.setNumeroDeEstrellas(3);
@@ -540,7 +542,10 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         System.out.println("No son iguales");
         nuevo.disminuirNumeroDeEstrellasOptenidas();
         mostrarestrella(nuevo.getEstrellasOptenidas());
+       Contadores.RestarPuntos();
+        Puntos.setText(String.valueOf(Contadores.getPuntos()));
         nuevo.ReiniciarCartas();
+ 
         
                        
     }
@@ -552,6 +557,9 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         mostrarestrella(nuevo.getEstrellasOptenidas());
         eliminarCarta1();
         eliminarCarta2();
+        Contadores.SumarPuntos();
+
+         Puntos.setText(String.valueOf(Contadores.getPuntos()));
         nuevo.ReiniciarCartas();
         
     }

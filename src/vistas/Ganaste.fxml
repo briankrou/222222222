@@ -12,22 +12,16 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GanasteController">
    <children>
-      <Label layoutX="192.0" layoutY="183.0" text="Ganaste">
-         <font>
-            <Font size="61.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnGanasteAceptar" layoutX="275.0" layoutY="287.0" mnemonicParsing="false" onAction="#pasarnivel" text="aceptar" />
-      <VBox layoutX="140.0" layoutY="49.0" prefHeight="134.0" prefWidth="204.0">
+      <VBox alignment="CENTER" layoutX="112.0" layoutY="56.0" prefHeight="156.0" prefWidth="377.0">
          <children>
-            <HBox prefHeight="69.0" prefWidth="335.0">
+            <HBox alignment="CENTER" prefHeight="88.0" prefWidth="408.0">
                <children>
                   <ImageView fx:id="estrella2" fitHeight="68.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/Star_96x96-32_37882.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="60.0" top="20.0" />
+                        <Insets bottom="-21.0" right="15.0" top="9.0" />
                      </HBox.margin>
                   </ImageView>
                   <ImageView fx:id="estrella1" disable="true" fitHeight="68.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
@@ -35,7 +29,7 @@
                         <Image url="@../img/Star_96x96-32_37882.png" />
                      </image>
                      <HBox.margin>
-                        <Insets bottom="17.0" />
+                        <Insets bottom="33.0" />
                      </HBox.margin>
                   </ImageView>
                   <ImageView fx:id="estrella3" fitHeight="68.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
@@ -43,7 +37,7 @@
                         <Image url="@../img/Star_96x96-32_37882.png" />
                      </image>
                      <HBox.margin>
-                        <Insets top="17.0" />
+                        <Insets bottom="-21.0" left="15.0" />
                      </HBox.margin>
                   </ImageView>
                </children>
@@ -55,19 +49,39 @@
                         <Image url="@../img/Star_96x96-32_37882.png" />
                      </image>
                      <HBox.margin>
-                        <Insets />
+                        <Insets right="49.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="estrella5" fitHeight="68.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="estrella5" fitHeight="68.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/Star_96x96-32_37882.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="184.0" />
+                        <Insets left="191.0" />
                      </HBox.margin>
                   </ImageView>
                </children>
             </HBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="158.0" layoutY="225.0" prefHeight="243.0" prefWidth="288.0">
+         <children>
+            <Label prefHeight="89.0" prefWidth="245.0" text="Ganaste!">
+               <font>
+                  <Font size="61.0" />
+               </font>
+            </Label>
+            <Label fx:id="puntos" alignment="CENTER" contentDisplay="CENTER" prefHeight="52.0" prefWidth="220.0" text="0000" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnGanasteAceptar" mnemonicParsing="false" onAction="#pasarnivel" prefHeight="46.0" prefWidth="222.0" text="SIGUIENTE NIVEL">
+               <VBox.margin>
+                  <Insets bottom="13.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnSalir" alignment="CENTER" mnemonicParsing="false" onAction="#Exit" prefHeight="39.0" prefWidth="181.0" text="SALIR" />
          </children>
       </VBox>
    </children>

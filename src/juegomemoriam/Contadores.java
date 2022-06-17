@@ -17,7 +17,7 @@ public class Contadores {
 //------------------------------------------------------variables------------------------------------------------------------- 
 static int nivel=0;
 
-String Dificultad;
+static String Dificultad;
 
 int carta1=0;
 
@@ -36,9 +36,29 @@ static int NumeroDeEstrellas;
 int cartasOptenidas=0;
 
 int  numeroDeCartas;
+static int  puntos;
 
 //------------------------------------------------------Metodos Get------------------------------------------------------------
+//SUMA PUNTOS POR CANTAS ENCONTRADAS 
+public static void SumarPuntos(){
+    puntos=puntos+10;
+}
 
+public static void RestarPuntos(){
+    if(getPuntos()>0){
+        puntos=puntos-10;
+    }
+    
+}
+public static void ReiniciarPuntos(){
+
+        puntos=0;
+
+}
+
+public  static int getPuntos(){
+    return puntos;
+}
 
 // RETORNA EL NUMERO DE ESTRELLAS DEL JUEGO SEGUN EL NIVEL 
 public static  int getNumeroDeEstrellas(){
@@ -169,11 +189,11 @@ public  String valorIdCarta2(){
 }
 
 //CAMBIA EL TEXTO DE DIFICULTAD 
-public  void CambiarDificultad(String dificultad){
+public static  void CambiarDificultad(String dificultad){
     Dificultad=dificultad;
 }
 //RETORNA EL VALOR DEL TEXTO DE DIFICULTAD
-public   String getDificultad(){
+public static  String getDificultad(){
     return Dificultad;
 }
 

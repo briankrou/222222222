@@ -214,6 +214,11 @@
                         <Insets top="5.0" />
                      </padding>
                   </GridPane>
+                  <Label fx:id="Puntos" alignment="CENTER" prefHeight="43.0" prefWidth="142.0" text="0000">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children>

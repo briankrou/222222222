@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -27,6 +28,12 @@ import juegomemoriam.iniciar;
  * @author BrianKrou
  */
 public class PerdisteController implements Initializable {
+        @FXML
+    private Label puntos;
+    
+    @FXML
+    private Button btnSalir;
+    
     @FXML
     private Button btnPerdisteAceptar;
 
@@ -59,10 +66,9 @@ public class PerdisteController implements Initializable {
 
     @FXML
     private ImageView estrellaPerdida5;
-
-    @FXML
-    void AceptarPerdida(ActionEvent event) throws IOException {
-        nivel();
+    
+        @FXML
+    void Exit(ActionEvent event) throws IOException {
         
         
         Object eventSource= event.getSource();
@@ -71,27 +77,72 @@ public class PerdisteController implements Initializable {
         Window window =oldScene.getWindow();
         Stage stage =(Stage) window;
         stage.hide();
-                                            
-        System.out.print("funciona");
-        Parent root = FXMLLoader.load(getClass().getResource("/vistas/SeleccionDificultad.fxml"));
+        
+        Contadores.reiniciarNivel();
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/vistas/principal.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        
+        
+        
     }
+
+    @FXML
+    void AceptarPerdida(ActionEvent event) throws IOException {
+       
+        
+        Object eventSource= event.getSource();
+        Node sourceAsNode = (Node) eventSource;
+        Scene oldScene= sourceAsNode.getScene();
+        Window window =oldScene.getWindow();
+        Stage stage =(Stage) window;
+        stage.hide();
+        switch(Contadores.getDificultad()){
+            case "FACIL":
+                    
+                    Parent root1 = FXMLLoader.load(getClass().getResource("/vistas/VistaModoFacil.fxml"));
+                    Scene scene1 = new Scene(root1);
+                    stage.setScene(scene1);
+                    stage.show();
+                    break;
+                    
+            case "MEDIO":
+                                    
+                    Parent root2 = FXMLLoader.load(getClass().getResource("/vistas/.fxml"));
+                    Scene scene2 = new Scene(root2);
+                    stage.setScene(scene2);
+                    stage.show();
+                    break;
+                    
+            case "DIFICIL":
+                                    
+                    Parent root3 = FXMLLoader.load(getClass().getResource("/vistas/.fxml"));
+                    Scene scene3 = new Scene(root3);
+                    stage.setScene(scene3);
+                    stage.show();
+                    break;       
+                    
+        }                                    
+
+    }
+    
     /**
      * Initializes the controller class.
      */
     
-    public static void  nivel(){
-        iniciar.reiniciarNivel();
 
-    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("el total de estrellas es "+Contadores.getEstrellasFinales());
         
         
         System.out.println("-------------------estrellas del juego "+Contadores.getNumeroDeEstrellas());
+        
+                
+        //puntos acomulados
+        puntos.setText(String.valueOf(Contadores.getPuntos()));
         
         switch(Contadores.getNumeroDeEstrellas()){
             case 3:
