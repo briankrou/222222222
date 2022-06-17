@@ -37,7 +37,7 @@ public class ParejaDeCartas {
     }
     
     
-    public void AsignarValor(int numero2){
+    public void juegoNuevo(int numero2){
         
         this.numero1=Contadores.getNivel()+1;
         this.numero2=numero2;

@@ -23,7 +23,7 @@ import javafx.stage.Window;
 import juegomemoriam.ComparadorDeCartas;
 import juegomemoriam.Contadores;
 import juegomemoriam.iniciar;
-import juegomemoriam.juegoNuevo;
+import juegomemoriam.ParejaDeCartas;
 import juegomemoriam.sound;
 
 /**
@@ -39,7 +39,7 @@ int nivelinicial;
 
     iniciar nuevo=new iniciar();
     
-    juegoNuevo[] arreglo=new juegoNuevo[2];
+    ParejaDeCartas[] arreglo=new ParejaDeCartas[2];
     @FXML
     private Label Puntos;
       @FXML
@@ -551,9 +551,9 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         }
 
     }
-            juegoNuevo Carta1=new juegoNuevo();
-            juegoNuevo Carta2=new juegoNuevo();
-            juegoNuevo Carta3=new juegoNuevo();
+            ParejaDeCartas Carta1=new ParejaDeCartas();
+            ParejaDeCartas Carta2=new ParejaDeCartas();
+            ParejaDeCartas Carta3=new ParejaDeCartas();
 
 //metood que crea y reparte cartas
     public void crearCartas(){
@@ -573,7 +573,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         
 }
 
-    public void carta1(juegoNuevo Carta){
+    public void carta1(ParejaDeCartas Carta){
                 System.out.println("INICIAAAA CARTA ------------------1");
             int contador2=0;
 
@@ -672,7 +672,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
     
   
             int contador3=0;
-    public void PosicionaCarta2(juegoNuevo Carta){
+    public void PosicionaCarta2(ParejaDeCartas Carta){
 
      System.out.println("INICIAAAA CARTA----------------- 2");
      
