@@ -76,25 +76,62 @@ public class GanasteController implements Initializable  {
     }
 
     @FXML
-    void pasarnivel(ActionEvent event) throws IOException {
-    
-
-                                            nivel();
+    void pasarnivel(ActionEvent event) throws IOException {   
         
-                                            Object eventSource= event.getSource();
-                                            Node sourceAsNode = (Node) eventSource;
-                                             Scene oldScene= sourceAsNode.getScene();
-                                             Window window =oldScene.getWindow();
-                                             Stage stage =(Stage) window;
-                                             stage.hide();
-                                            
-                                             
-                                            Parent root = FXMLLoader.load(getClass().getResource("/vistas/VistaModoFacil.fxml"));
-                                             Scene scene = new Scene(root);
-                                             stage.setScene(scene);
-                                             stage.show();
+        
+        nivel();        
+        Object eventSource= event.getSource();
+        Node sourceAsNode = (Node) eventSource;
+        Scene oldScene= sourceAsNode.getScene();
+        Window window =oldScene.getWindow();
+        Stage stage =(Stage) window;
+        stage.hide();
+        
+        if(Contadores.getNivel()==10){
+            
+            System.out.print("funcionaaaaa----------------------------------------------------------");
+            
+                    Parent root = FXMLLoader.load(getClass().getResource("/vistas/VistaUltimoNivel.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                   
+                  
+        }else{
+
+                switch(Contadores.getDificultad()){
+                
+            case "FACIL":
                     
+                    Parent root1 = FXMLLoader.load(getClass().getResource("/vistas/VistaModoFacil.fxml"));
+                    Scene scene1 = new Scene(root1);
+                    stage.setScene(scene1);
+                    stage.show();
+                    break;
+                    
+            case "MEDIO":
+                                    
+                    Parent root2 = FXMLLoader.load(getClass().getResource("/vistas/.fxml"));
+                    Scene scene2 = new Scene(root2);
+                    stage.setScene(scene2);
+                    stage.show();
+                    break;
+                    
+            case "DIFICIL":
+                                    
+                    Parent root3 = FXMLLoader.load(getClass().getResource("/vistas/.fxml"));
+                    Scene scene3 = new Scene(root3);
+                    stage.setScene(scene3);
+                    stage.show();
+                    break;       
+                    
+            }  
+            
+        }
     }
+        
+            
+    
     
     public static void  nivel(){
         iniciar.Subirnivel();

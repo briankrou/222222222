@@ -30,6 +30,17 @@ public class principalController implements Initializable {
 
     @FXML
     private Label label;
+    
+    @FXML
+    void Exit(ActionEvent event) {
+       Object eventSource= event.getSource();
+       Node sourceAsNode = (Node) eventSource;
+       Scene oldScene= sourceAsNode.getScene();
+       Window window =oldScene.getWindow();
+       Stage stage =(Stage) window;
+       stage.hide();
+
+    }
 
     @FXML
     void inicarjuego(ActionEvent event) throws IOException {
