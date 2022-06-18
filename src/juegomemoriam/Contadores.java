@@ -176,15 +176,10 @@ public static  String getDificultad(){
 
 
 
-public static int numeroaleatorio(String dificultad){
-        int n=0;
-        switch(dificultad){
-            
-            case "FACIL":
-                n=5;
-        }
+public static int numeroaleatorio(int num){
+ 
                 Random rd = new Random();
-                int numeroAleatorio = rd.nextInt(n);
+                int numeroAleatorio = rd.nextInt(num);
                 System.out.println("nuemero aleatorio "+numeroAleatorio);
                 return numeroAleatorio;
     }

@@ -140,12 +140,14 @@ public class VistaModoFacilController implements Initializable {
     @FXML
     private Button btnb3;
     
-     
-    
     
 //valores carta
     
     
+    
+ParejaDeCartas Carta1=new ParejaDeCartas();
+ParejaDeCartas Carta2=new ParejaDeCartas();
+ParejaDeCartas Carta3=new ParejaDeCartas();
 
     int a1=0;
     int a2=0;
@@ -173,8 +175,11 @@ public class VistaModoFacilController implements Initializable {
 @FXML
 void cartaElegidaA1(ActionEvent event) throws IOException {
    
-    CartasSeleccionadas();
-    
+         if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
+            
+            ocultarCartas(); 
+        
+        }
     contenedorA1.setVisible(true);
 
 //--------------VALORES DE LA CARTA------//   
@@ -208,7 +213,11 @@ void cartaElegidaA1(ActionEvent event) throws IOException {
  ////////////////////////// BOTON A2 /////////////////////////////
 @FXML
 void cartaElegidaA2(ActionEvent event) throws IOException {
-     ocultarCartas(); 
+        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
+            
+            ocultarCartas(); 
+        
+        }
      contenedorA2.setVisible(true);
      
 //--------------VALORES DE LA CARTA------//   
@@ -242,7 +251,11 @@ void cartaElegidaA2(ActionEvent event) throws IOException {
  ////////////////////////// BOTON A3 /////////////////////////////
 @FXML
 void cartaElegidaA3(ActionEvent event) throws IOException {
-         ocultarCartas(); 
+        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
+            
+            ocultarCartas(); 
+        
+        }
     contenedorA3.setVisible(true);
     
    
@@ -291,7 +304,11 @@ void cartaElegidaA3(ActionEvent event) throws IOException {
  ////////////////////////// BOTON B1 /////////////////////////////
 @FXML
 void cartaElegidaB1(ActionEvent event) throws IOException {
-     ocultarCartas(); 
+        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
+            
+            ocultarCartas(); 
+        
+        }
     contenedorB1.setVisible(true);
     
    
@@ -327,7 +344,11 @@ void cartaElegidaB1(ActionEvent event) throws IOException {
 
 @FXML
 void cartaElegidaB2(ActionEvent event) throws IOException {
- CartasSeleccionadas();
+        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
+            
+            ocultarCartas(); 
+        
+        }
     contenedorB2.setVisible(true);
 //--------------VALORES DE LA CARTA------//   
 //VALOR ID UNICO DEL BOTON               //
@@ -361,7 +382,11 @@ void cartaElegidaB2(ActionEvent event) throws IOException {
 
 @FXML
 void cartaElegidaB3(ActionEvent event) throws IOException {
- CartasSeleccionadas();
+        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
+            
+            ocultarCartas(); 
+        
+        }
     contenedorB3.setVisible(true);
    
     
@@ -397,13 +422,15 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
 }
 
      int contador=0;
+     
+    //CARGA LOS VALORES INICIALES DEL JUEGO
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      //INICIA LOS VALORES DEL JUEGO
             //puntos acomulados
             Puntos.setText(String.valueOf(Contadores.getPuntos()));
      
-            crearCartas();
+            asiganarValorParejaDeCartas();
             Contadores.reiciarEstrellasOptenidas();
             
   
@@ -439,15 +466,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
     }   
     
     
-    public void CartasSeleccionadas(){
-        
-        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
-            
-            ocultarCartas(); 
-        
-        }
-    }
-           
+     //AL HACER CLICK REALIZA  LA SIGUIENTE ACCION
     public void eventoClick(int valorCarta,String ID){
         
         if(ComparadorDeCartas.asignarvalorCartasSeleccionadas(valorCarta,ID)){
@@ -464,7 +483,8 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         }
     
     }
-
+    
+    //ABRE LA INTERFAS GRAFICA DE GANASTE
     public void abrirVistaGanaste(Stage stage) throws IOException{
             System.out.println("Abre venta ganaste ");
             Parent root = FXMLLoader.load(getClass().getResource("/vistas/Ganaste.fxml"));
@@ -474,6 +494,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
 
     }
     
+    //ABRE LA INTERFAS GRAFICA DE PERDISTE
     public void abrirVistaPerdiste(Stage stage) throws IOException{
             System.out.print("la estrellas cargan "+Contadores.getEstrellasOptenidas());
             Contadores.setEstrellasFinales(Contadores.getEstrellasOptenidas());
@@ -484,6 +505,8 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
             stage.show();
             
     }
+    
+    //si las cartas NO son iguales realiza la sieguiente accion
     public void NoSonIguales(){
         
         System.out.println("No son iguales");
@@ -496,6 +519,8 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         
                        
     }
+    
+    //si las cartas son iguales realiza la sieguiente accion
     public void sonIguales(){ 
         System.out.println("son iguales ");
         Contadores.sumarCartasOptenidas();
@@ -543,34 +568,44 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         }
 
     }
-            ParejaDeCartas Carta1=new ParejaDeCartas();
-            ParejaDeCartas Carta2=new ParejaDeCartas();
-            ParejaDeCartas Carta3=new ParejaDeCartas();
 
-//metood que crea y reparte cartas
-    public void crearCartas(){
-        
-        
-        Carta1.juegoNuevo(1);
+//establece valor a la pareja de cartas 
+    public void asiganarValorParejaDeCartas(){
+        int n=0;
+        int numero;
+        numero=Contadores.numeroaleatorio(10)+1;
+        Carta1.juegoNuevo(numero);
+        while(n<2){
+            numero=Contadores.numeroaleatorio(10)+1;
+            if(Carta1.getNumero2()!=numero){
+                if(Carta2.getNumero2()==0){
+                    Carta2.juegoNuevo(numero);
+                    n++;
+                }else{
+                    if(Carta2.getNumero2()!=numero){
+                       if(Carta3.getNumero2()==0){
+                            Carta3.juegoNuevo(numero);
+                            n++;
+                       }
+                    }
+                }
+            }
+        }
+    
         Carta2.juegoNuevo(2);
         Carta3.juegoNuevo(3);
-                  carta1(Carta1);
-                  carta1(Carta2);
-                  carta1(Carta3);
-                  
-                  
-            
-        
-
-        
+        PosicionaCarta1(Carta1);
+        PosicionaCarta1(Carta2);
+        PosicionaCarta1(Carta3);
+  
 }
-
-    public void carta1(ParejaDeCartas Carta){
+  //posiciona carta1 que es la que solo tiene la operacion
+    public void PosicionaCarta1(ParejaDeCartas Carta){
                 System.out.println("INICIAAAA CARTA ------------------1");
             int contador2=0;
 
         while(contador2<1){
-            switch(Contadores.numeroaleatorio("FACIL")){
+            switch(Contadores.numeroaleatorio(5)){
                 case 0:
                        
                     if(a1==0){
@@ -661,9 +696,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         }
     }
 
-    
-  
-            int contador3=0;
+   //posiciona carta2 que es la que solo tiene el resultado
     public void PosicionaCarta2(ParejaDeCartas Carta){
 
      System.out.println("INICIAAAA CARTA----------------- 2");
@@ -671,7 +704,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
             int contador2=0;
 
         while(contador2<1){
-            switch(Contadores.numeroaleatorio("FACIL")){
+            switch(Contadores.numeroaleatorio(5)){
                 
                 case 0:
                     if(a1==0){
@@ -738,10 +771,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
      }
     }}
 
-
-        
-
-    //METODO QUE OCULTA CARTAS
+    // OCULTA CARTAS
     
     public void ocultarCartas(){
         System.out.println("--Ocultando cartas--");
@@ -783,9 +813,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         }
     }
     
-    
-    
-    
+
     //metodo que elimina la segunda carta
     public void eliminarCarta2(){
            System.out.println("Elimina carta 2 con ID: "+ComparadorDeCartas.getIDcarta2());
