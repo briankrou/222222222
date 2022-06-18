@@ -573,20 +573,25 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
     public void asiganarValorParejaDeCartas(){
         int n=0;
         int numero;
-        numero=Contadores.numeroaleatorio(10)+1;
-        Carta1.juegoNuevo(numero);
-        while(n<2){
+        
+      
+        while(n<3){
             numero=Contadores.numeroaleatorio(10)+1;
-            if(Carta1.getNumero2()!=numero){
-                if(Carta2.getNumero2()==0){
-                    Carta2.juegoNuevo(numero);
-                    n++;
-                }else{
-                    if(Carta2.getNumero2()!=numero){
-                       if(Carta3.getNumero2()==0){
-                            Carta3.juegoNuevo(numero);
-                            n++;
-                       }
+            if(Carta1.getNumero2()==0){
+                Carta1.juegoNuevo(numero);
+                n++;
+            }else{
+                if(Carta1.getNumero2()!=numero){
+                    if(Carta2.getNumero2()==0){
+                        Carta2.juegoNuevo(numero);
+                        n++;
+                    }else{
+                        if(Carta2.getNumero2()!=numero){
+                           if(Carta3.getNumero2()==0){
+                                Carta3.juegoNuevo(numero);
+                                n++;
+                           }
+                        }
                     }
                 }
             }
