@@ -32,16 +32,10 @@ import juegomemoriam.ParejaDeCartas;
  */
 public class VistaModoFacilController implements Initializable {
 
-int nivelinicial;
-    int cartasSeleccionadas=0;
 
-
-    Contadores nuevo=new Contadores();
-    
-    ParejaDeCartas[] arreglo=new ParejaDeCartas[2];
     @FXML
     private Label Puntos;
-      @FXML
+    @FXML
     private HBox contenedorA1;
 
     @FXML
@@ -152,14 +146,9 @@ int nivelinicial;
     
 //valores carta
     
+    ParejaDeCartas Carta1,Carta2,Carta3=new ParejaDeCartas();
     
-
-    int a1=0;
-    int a2=0;
-    int a3=0;
-    int b1=0;
-    int b2=0;
-    int b3=0;
+    int a1,a2,a3,b1,b2,b3;
     
     //texto carta A1
     String TextA1L1,TextA1L2,TextA1L3;
@@ -174,13 +163,15 @@ int nivelinicial;
     //texto carta B3
     String TextB3L1,TextB3L2="",TextB3L3;
   
-    
-    
  ////////////////////////// BOTON A1 /////////////////////////////
 @FXML
 void cartaElegidaA1(ActionEvent event) throws IOException {
    
-    CartasSeleccionadas();
+        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
+            
+            ocultarCartas(); 
+        
+        }
     
     contenedorA1.setVisible(true);
 
@@ -194,7 +185,7 @@ void cartaElegidaA1(ActionEvent event) throws IOException {
 
     eventoClick(valorCarta,ID);
     
-    if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
+    if(Contadores.getNumeroDeCartas()==Contadores.getCartasOptenidas()){
                 
         Object eventSource= event.getSource();
         Node sourceAsNode = (Node) eventSource;
@@ -203,7 +194,7 @@ void cartaElegidaA1(ActionEvent event) throws IOException {
         Stage stage =(Stage) window;
         stage.hide();
                 
-        if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
+        if(Contadores.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
             abrirVistaGanaste(stage);
         }else{
             abrirVistaPerdiste(stage);
@@ -215,7 +206,11 @@ void cartaElegidaA1(ActionEvent event) throws IOException {
  ////////////////////////// BOTON A2 /////////////////////////////
 @FXML
 void cartaElegidaA2(ActionEvent event) throws IOException {
-     ocultarCartas(); 
+        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
+            
+            ocultarCartas(); 
+        
+        }
      contenedorA2.setVisible(true);
      
 //--------------VALORES DE LA CARTA------//   
@@ -227,7 +222,7 @@ void cartaElegidaA2(ActionEvent event) throws IOException {
 //------------------------------------_--//
 
             eventoClick(valorCarta,ID);
-            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
+            if(Contadores.getNumeroDeCartas()==Contadores.getCartasOptenidas()){
                 
                 Object eventSource= event.getSource();
                 Node sourceAsNode = (Node) eventSource;
@@ -236,7 +231,7 @@ void cartaElegidaA2(ActionEvent event) throws IOException {
                 Stage stage =(Stage) window;
                 stage.hide();
                 
-                if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
+                if(Contadores.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
                     abrirVistaGanaste(stage);
                 }else{
                     abrirVistaPerdiste(stage);
@@ -262,9 +257,9 @@ void cartaElegidaA3(ActionEvent event) throws IOException {
 //------------------------------------_--//
 
             eventoClick(valorCarta,ID);
-            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
+            if(Contadores.getNumeroDeCartas()==Contadores.getCartasOptenidas()){
                 
-                                Contadores.setEstrellasFinales(nuevo.getEstrellasOptenidas());
+                                Contadores.setEstrellasFinales(Contadores.getEstrellasOptenidas());
                                
                              
        //*****SI LAS CARTAS ESTAN COMPLETAS
@@ -282,7 +277,7 @@ void cartaElegidaA3(ActionEvent event) throws IOException {
                                              
                                 //Comprueba las estrellas del juego para decidir que interfas iniciar
                                              
-                if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
+                if(Contadores.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
                     abrirVistaGanaste(stage);
                 }else{
                     abrirVistaPerdiste(stage);
@@ -298,7 +293,11 @@ void cartaElegidaA3(ActionEvent event) throws IOException {
  ////////////////////////// BOTON B1 /////////////////////////////
 @FXML
 void cartaElegidaB1(ActionEvent event) throws IOException {
-     ocultarCartas(); 
+         if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
+            
+            ocultarCartas(); 
+        
+        }
     contenedorB1.setVisible(true);
     
    
@@ -311,7 +310,7 @@ void cartaElegidaB1(ActionEvent event) throws IOException {
 //------------------------------------_--//
 
             eventoClick(valorCarta,ID);
-            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
+            if(Contadores.getNumeroDeCartas()==Contadores.getCartasOptenidas()){
                 
                 Object eventSource= event.getSource();
                 Node sourceAsNode = (Node) eventSource;
@@ -320,7 +319,7 @@ void cartaElegidaB1(ActionEvent event) throws IOException {
                 Stage stage =(Stage) window;
                 stage.hide();
                 
-                if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
+                if(Contadores.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
                     abrirVistaGanaste(stage);
                 }else{
                     abrirVistaPerdiste(stage);
@@ -334,7 +333,11 @@ void cartaElegidaB1(ActionEvent event) throws IOException {
 
 @FXML
 void cartaElegidaB2(ActionEvent event) throws IOException {
- CartasSeleccionadas();
+        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
+            
+            ocultarCartas(); 
+        
+        }
     contenedorB2.setVisible(true);
 //--------------VALORES DE LA CARTA------//   
 //VALOR ID UNICO DEL BOTON               //
@@ -345,7 +348,7 @@ void cartaElegidaB2(ActionEvent event) throws IOException {
 //------------------------------------_--//
 
             eventoClick(valorCarta,ID);
-            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
+            if(Contadores.getNumeroDeCartas()==Contadores.getCartasOptenidas()){
                 
                 Object eventSource= event.getSource();
                 Node sourceAsNode = (Node) eventSource;
@@ -354,7 +357,7 @@ void cartaElegidaB2(ActionEvent event) throws IOException {
                 Stage stage =(Stage) window;
                 stage.hide();
                 
-                if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
+                if(Contadores.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
                     abrirVistaGanaste(stage);
                 }else{
                     abrirVistaPerdiste(stage);
@@ -368,7 +371,11 @@ void cartaElegidaB2(ActionEvent event) throws IOException {
 
 @FXML
 void cartaElegidaB3(ActionEvent event) throws IOException {
- CartasSeleccionadas();
+        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
+            
+            ocultarCartas(); 
+        
+        }
     contenedorB3.setVisible(true);
    
     
@@ -382,7 +389,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
 //------------------------------------_--//
 
             eventoClick(valorCarta,ID);
-            if(nuevo.getNumeroDeCartas()==nuevo.getCartasOptenidas()){
+            if(Contadores.getNumeroDeCartas()==Contadores.getCartasOptenidas()){
                 
                 Object eventSource= event.getSource();
                 Node sourceAsNode = (Node) eventSource;
@@ -391,8 +398,8 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
                 Stage stage =(Stage) window;
                 stage.hide();
                 
-                System.out.print("estrellas optenidas"+ nuevo.getEstrellasOptenidas()+"  ");
-                if(nuevo.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
+                System.out.print("estrellas optenidas"+ Contadores.getEstrellasOptenidas()+"  ");
+                if(Contadores.getEstrellasOptenidas()==Contadores.getNumeroDeEstrellas()){
                     abrirVistaGanaste(stage);
                 }else{
                     abrirVistaPerdiste(stage);
@@ -403,15 +410,14 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         
 }
 
-     int contador=0;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      //INICIA LOS VALORES DEL JUEGO
             //puntos acomulados
             Puntos.setText(String.valueOf(Contadores.getPuntos()));
      
-            crearCartas();
-            nuevo.reiciarEstrellasOptenidas();
+            AsignarValorACartas();
+            Contadores.reiciarEstrellasOptenidas();
             
   
             //muestra el valor de la dificultad
@@ -421,13 +427,13 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
             Contadores.setNumeroDeEstrellas(3);
 
             //Asignamos el numero de cartas del juego
-            nuevo.setNumeroDeCartas(3);
+            Contadores.setNumeroDeCartas(3);
                       
             // muestra el valor de dficultad 
             Nivel.setText(String.valueOf(Contadores.getNivel()));
             
             //muestra las estrellas iniciales Optenidas
-            mostrarestrella(nuevo.getEstrellasOptenidas());
+            mostrarestrellas(Contadores.getEstrellasOptenidas());
             
             //ocultar cartas
              ocultarCartas();
@@ -444,17 +450,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
               btnB3L1.setText(TextB3L1);btnB3L2.setText(TextB3L2);btnB3L3.setText(TextB3L3);
 
     }   
-    
-    
-    public void CartasSeleccionadas(){
         
-        if(ComparadorDeCartas.getValorCarta1()==0&&ComparadorDeCartas.getValorCarta2()==0){
-            
-            ocultarCartas(); 
-        
-        }
-    }
-           
     public void eventoClick(int valorCarta,String ID){
         
         if(ComparadorDeCartas.asignarvalorCartasSeleccionadas(valorCarta,ID)){
@@ -482,8 +478,8 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
     }
     
     public void abrirVistaPerdiste(Stage stage) throws IOException{
-            System.out.print("la estrellas cargan "+nuevo.getEstrellasOptenidas());
-            Contadores.setEstrellasFinales(nuevo.getEstrellasOptenidas());
+            System.out.print("la estrellas cargan "+Contadores.getEstrellasOptenidas());
+            Contadores.setEstrellasFinales(Contadores.getEstrellasOptenidas());
             System.out.println("Abre venta Perdiste ");
             Parent root = FXMLLoader.load(getClass().getResource("/vistas/Perdiste.fxml"));
             Scene scene = new Scene(root);
@@ -491,24 +487,24 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
             stage.show();
             
     }
+    
     public void NoSonIguales(){
         
         System.out.println("No son iguales");
-        nuevo.disminuirNumeroDeEstrellasOptenidas();
-        mostrarestrella(nuevo.getEstrellasOptenidas());
+        Contadores.disminuirNumeroDeEstrellasOptenidas();
+        mostrarestrellas(Contadores.getEstrellasOptenidas());
        Contadores.RestarPuntos();
         Puntos.setText(String.valueOf(Contadores.getPuntos()));
         ComparadorDeCartas.reiniciarCartas();
- 
-        
-                       
+                    
     }
+    
     public void sonIguales(){ 
         System.out.println("son iguales ");
-        nuevo.sumarCartasOptenidas();
-        nuevo.aumentarNumeroDeEstrellasOptenidas();
-        System.out.print("Las estreñas optenidaso son ---->"+nuevo.getEstrellasOptenidas());
-        mostrarestrella(nuevo.getEstrellasOptenidas());
+        Contadores.sumarCartasOptenidas();
+        Contadores.aumentarNumeroDeEstrellasOptenidas();
+        System.out.print("Las estreñas optenidaso son ---->"+Contadores.getEstrellasOptenidas());
+        mostrarestrellas(Contadores.getEstrellasOptenidas());
         eliminarCarta1();
         eliminarCarta2();
         Contadores.SumarPuntos();
@@ -520,7 +516,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
     
  //METODO QUE MUESTRA O OCULTA  ESTRELLA EN LA INTERFAS GRAFICA
     
-   public void mostrarestrella(int num){
+    public void mostrarestrellas(int num){
         switch(num){
             case 0:
             System.out.println("mostramos 0 estrellas");
@@ -550,29 +546,22 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         }
 
     }
-            ParejaDeCartas Carta1=new ParejaDeCartas();
-            ParejaDeCartas Carta2=new ParejaDeCartas();
-            ParejaDeCartas Carta3=new ParejaDeCartas();
 
 //metood que crea y reparte cartas
-    public void crearCartas(){
+    public void AsignarValorACartas(){
         
         
         Carta1.juegoNuevo(1);
         Carta2.juegoNuevo(2);
         Carta3.juegoNuevo(3);
-                  carta1(Carta1);
-                  carta1(Carta2);
-                  carta1(Carta3);
-                  
-                  
-            
-        
+        PosicionarCarta1(Carta1);
+        PosicionarCarta1(Carta2);
+        PosicionarCarta1(Carta3);
 
         
 }
 
-    public void carta1(ParejaDeCartas Carta){
+    public void PosicionarCarta1(ParejaDeCartas Carta){
                 System.out.println("INICIAAAA CARTA ------------------1");
             int contador2=0;
 
@@ -668,9 +657,6 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
         }
     }
 
-    
-  
-            int contador3=0;
     public void PosicionaCarta2(ParejaDeCartas Carta){
 
      System.out.println("INICIAAAA CARTA----------------- 2");
@@ -744,10 +730,7 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
             
      }
     }}
-
-
-        
-
+  
     //METODO QUE OCULTA CARTAS
     
     public void ocultarCartas(){
@@ -785,14 +768,10 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
             case "b3":
                
                  btnb3.setVisible(false);
-                break;
-               
+                break;       
         }
     }
-    
-    
-    
-    
+
     //metodo que elimina la segunda carta
     public void eliminarCarta2(){
            System.out.println("Elimina carta 2 con ID: "+ComparadorDeCartas.getIDcarta2());
@@ -815,13 +794,8 @@ void cartaElegidaB3(ActionEvent event) throws IOException {
             case "b3":
                 btnb3.setVisible(false);
                 break;
-        }
-        
+        } 
     }
-
-    
-    
-
 }
   
 

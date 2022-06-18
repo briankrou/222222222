@@ -14,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -30,12 +29,6 @@ import juegomemoriam.Contadores;
 public class PerdisteController implements Initializable {
         @FXML
     private Label puntos;
-    
-    @FXML
-    private Button btnSalir;
-    
-    @FXML
-    private Button btnPerdisteAceptar;
 
     @FXML
     private ImageView estrella1;
@@ -84,9 +77,7 @@ public class PerdisteController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        
-        
-        
+
     }
 
     @FXML
@@ -130,16 +121,16 @@ public class PerdisteController implements Initializable {
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("el total de estrellas es "+Contadores.getEstrellasFinales());
-        
-        
-        System.out.println("-------------------estrellas del juego "+Contadores.getNumeroDeEstrellas());
-        
+
+        //reiniciar cartas optenidas
+        Contadores.reiniciarCartasOptenidas();
                 
         //puntos acomulados
         puntos.setText(String.valueOf(Contadores.getPuntos()));

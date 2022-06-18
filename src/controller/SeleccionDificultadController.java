@@ -14,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import juegomemoriam.Contadores;
@@ -27,25 +26,12 @@ import juegomemoriam.Contadores;
  */
 public class SeleccionDificultadController implements Initializable {
     
-
-    
-    Contadores nuevo=new Contadores();
-
-       @FXML
-    private Button btndificil;
-
-    @FXML
-    private Button btnfacil;
-
-    @FXML
-    private Button btnmedio;
-
     @FXML
     void entrardificil(ActionEvent event) throws IOException {
            
  
         
-       nuevo.CambiarDificultad("FACIL");
+       Contadores.CambiarDificultad("FACIL");
        Object eventSource= event.getSource();
        Node sourceAsNode = (Node) eventSource;
        Scene oldScene= sourceAsNode.getScene();

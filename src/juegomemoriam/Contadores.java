@@ -23,15 +23,15 @@ static String Dificultad;
 
 
 
-int Estrellasoptenidas; 
+static int Estrellasoptenidas; 
 
 static int EstrelalsoptenidasFinales;
 
 static int NumeroDeEstrellas;
 
-int cartasOptenidas=0;
+static int cartasOptenidas=0;
 
-int  numeroDeCartas;
+static int  numeroDeCartas;
 static int  puntos;
 
 //------------------------------------------------------Metodos Get------------------------------------------------------------
@@ -68,12 +68,12 @@ public static  void setNumeroDeEstrellas(int num){
 
 // CAMBIA EL NUMERO DE CARTAS QUE HAY QUE DESTAPAR 
 
-public void setNumeroDeCartas(int num){
+public static  void setNumeroDeCartas(int num){
     numeroDeCartas=num;
 }
 
 //REINICIA LAS ESTRELLAS OPTENIDAS 
-public  void reiciarEstrellasOptenidas(){
+public static void reiciarEstrellasOptenidas(){
     
     Estrellasoptenidas=0;
     
@@ -86,7 +86,7 @@ public static void setEstrellasFinales(int num){
     EstrelalsoptenidasFinales=num;
 }
 //METODO AYUDO AUMENTA LAS ESTRELLAS 
-public  void aumentarNumeroDeEstrellasOptenidas(){
+public static  void aumentarNumeroDeEstrellasOptenidas(){
 
         if(Estrellasoptenidas<getNumeroDeEstrellas()){
             
@@ -98,7 +98,7 @@ public  void aumentarNumeroDeEstrellasOptenidas(){
 
 }
 //METODO RESTA ESTRELLAS 
-public void disminuirNumeroDeEstrellasOptenidas(){
+public static  void disminuirNumeroDeEstrellasOptenidas(){
     System.out.println("menos una estrella");
     
        if(Estrellasoptenidas>0){
@@ -117,14 +117,17 @@ public static void reiniciarNivel(){
 
 //SUMA A EL CONTADOR DE CARTAS OPTENIDAS A MEDIA QUE LAS ENCUENTRA 
 
-public  void sumarCartasOptenidas(){
+public static  void sumarCartasOptenidas(){
     cartasOptenidas++;
+}
+public static void reiniciarCartasOptenidas(){
+    cartasOptenidas=0;
 }
 
 ///-----------------------------------------------------Metodos Set-----------------------------------------------------------
 
 //RETORNA EL NUMERO DE ESTRELLAS OPTENIDAS 
-public  int getEstrellasOptenidas(){
+public  static int getEstrellasOptenidas(){
     return Estrellasoptenidas;
 }
 
@@ -134,7 +137,7 @@ public static int getEstrellasFinales(){
 }
 //RETORNA NUMERO DE CARYAS DEL JUEGO SEGUN EL NIVEL 
 
-public int getNumeroDeCartas(){
+public static int getNumeroDeCartas(){
     return numeroDeCartas;
 }
 //RETORNA EL NIVEL DEL JUEGO
@@ -144,7 +147,7 @@ public static int getNivel(){
 
 //RESTONA EL NUMERO DE CARTAS OPTENIDAS 
 
-public  int  getCartasOptenidas(){
+public  static int  getCartasOptenidas(){
     
     return cartasOptenidas;
     
@@ -163,7 +166,7 @@ public static  String getDificultad(){
 
 
 
-    public static int numeroaleatorio(String dificultad){
+public static int numeroaleatorio(String dificultad){
         int n=0;
         switch(dificultad){
             

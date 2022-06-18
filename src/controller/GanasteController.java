@@ -141,6 +141,9 @@ public class GanasteController implements Initializable  {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        //reiniciar cartas optenidas
+        Contadores.reiniciarCartasOptenidas();
+        
         //puntos acomulados
         puntos.setText(String.valueOf(Contadores.getPuntos()));
         
