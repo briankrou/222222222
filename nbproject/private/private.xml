@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/BrianKrou/Documents/NetBeansProjects/juegoMemoriaM/src/juegomemoriam/iniciar.java</file>
+            <file>file:/C:/Users/BrianKrou/Documents/NetBeansProjects/juegoMemoriaM/src/controller/GanasteController.java</file>
             <file>file:/C:/Users/BrianKrou/Documents/NetBeansProjects/juegoMemoriaM/src/juegomemoriam/Contadores.java</file>
             <file>file:/C:/Users/BrianKrou/Documents/NetBeansProjects/juegoMemoriaM/src/controller/VistaModoFacilController.java</file>
-            <file>file:/C:/Users/BrianKrou/Documents/NetBeansProjects/juegoMemoriaM/src/juegomemoriam/juegoNuevo.java</file>
+            <file>file:/C:/Users/BrianKrou/Documents/NetBeansProjects/juegoMemoriaM/src/juegomemoriam/JuegoMemoriaM.java</file>
+            <file>file:/C:/Users/BrianKrou/Documents/NetBeansProjects/juegoMemoriaM/src/controller/PerdisteController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -129,7 +129,11 @@ public class PerdisteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+
         //reiniciar cartas optenidas
+
+    //REINICIAR EL CONTADOR DE ESTRELLAS OPTENIDAS    
+
         Contadores.reiniciarCartasOptenidas();
                 
         //puntos acomulados

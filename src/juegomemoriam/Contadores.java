@@ -73,7 +73,10 @@ public static  void setNumeroDeCartas(int num){
 }
 
 //REINICIA LAS ESTRELLAS OPTENIDAS 
+
 public static void reiciarEstrellasOptenidas(){
+
+
     
     Estrellasoptenidas=0;
     
@@ -117,7 +120,9 @@ public static void reiniciarNivel(){
 
 //SUMA A EL CONTADOR DE CARTAS OPTENIDAS A MEDIA QUE LAS ENCUENTRA 
 
+
 public static  void sumarCartasOptenidas(){
+
     cartasOptenidas++;
 }
 public static void reiniciarCartasOptenidas(){
@@ -127,7 +132,9 @@ public static void reiniciarCartasOptenidas(){
 ///-----------------------------------------------------Metodos Set-----------------------------------------------------------
 
 //RETORNA EL NUMERO DE ESTRELLAS OPTENIDAS 
-public  static int getEstrellasOptenidas(){
+
+public static  int getEstrellasOptenidas(){
+
     return Estrellasoptenidas;
 }
 
@@ -137,7 +144,9 @@ public static int getEstrellasFinales(){
 }
 //RETORNA NUMERO DE CARYAS DEL JUEGO SEGUN EL NIVEL 
 
-public static int getNumeroDeCartas(){
+
+public static  int getNumeroDeCartas(){
+
     return numeroDeCartas;
 }
 //RETORNA EL NIVEL DEL JUEGO
@@ -152,6 +161,7 @@ public  static int  getCartasOptenidas(){
     return cartasOptenidas;
     
 }
+
 
 
 

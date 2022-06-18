@@ -32,9 +32,6 @@ import javafx.stage.Window;
 public class GanasteController implements Initializable  {
     @FXML
     private Label puntos;
-
-   @FXML
-    private Button btnSalir;
    
     @FXML
     private ImageView estrella1;
@@ -51,8 +48,6 @@ public class GanasteController implements Initializable  {
     @FXML
     private ImageView estrella5;
     
-    @FXML
-    private Button btnGanasteAceptar;
    @FXML
     void Exit(ActionEvent event) throws IOException {
         
@@ -141,9 +136,14 @@ public class GanasteController implements Initializable  {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+
         //reiniciar cartas optenidas
+
+    
+    
+    //REINICIAR EL CONTADOR DE ESTRELLAS OPTENIDAS    
         Contadores.reiniciarCartasOptenidas();
-        
+
         //puntos acomulados
         puntos.setText(String.valueOf(Contadores.getPuntos()));
         
